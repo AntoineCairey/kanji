@@ -1,0 +1,6 @@
+<p>kanji-list works!</p>
+<div class="container">
+  @for (kanji of data; track kanji.kanji) {
+    <app-tile [kanji]="kanji" (click)="openKanji(kanji)" />
+  }
+</div>
