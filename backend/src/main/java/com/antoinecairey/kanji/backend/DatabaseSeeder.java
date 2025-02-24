@@ -1,4 +1,4 @@
-package com.antoinecairey.kanji.backend;
+/* package com.antoinecairey.kanji.backend;
 
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.context.annotation.Bean;
@@ -17,4 +17,4 @@ public class DatabaseSeeder {
       System.out.println("Utilisateur ajouté !");
     };
   }
-}
+} */

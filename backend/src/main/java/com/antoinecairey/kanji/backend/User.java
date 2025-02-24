@@ -1,14 +1,20 @@
 package com.antoinecairey.kanji.backend;
 
 import lombok.Data;
-import org.springframework.data.annotation.Id;
-import org.springframework.data.relational.core.mapping.Table;
+import jakarta.persistence.*;
 
 @Data // Génère automatiquement getters, setters, equals, hashCode, toString
-@Table("users") // Correspond à la table dans la BDD
+@Entity
+@Table(name = "users")
 public class User {
-  @Id
-  private Long id;
-  private String name;
-  private String email;
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+
+    @Column(nullable = false, length = 100)
+    private String name;
+
+    @Column(nullable = false, unique = true)
+    private String email;
 }
