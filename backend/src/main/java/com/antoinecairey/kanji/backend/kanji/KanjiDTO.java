@@ -1,4 +1,4 @@
-package com.antoinecairey.kanji.backend.user;
+package com.antoinecairey.kanji.backend.kanji;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
 
@@ -10,8 +10,10 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 @JsonInclude(JsonInclude.Include.NON_NULL)
-public class UserDTO {
-    private Long id;
-    private String name;
-    private String email;
+public class KanjiDTO {
+  private Long id;
+  private String symbol;
+  private String fr;
+  private String kun;
+  private String onn;
 }
