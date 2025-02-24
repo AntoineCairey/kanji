@@ -1,4 +1,4 @@
-package com.antoinecairey.kanji.backend;
+package com.antoinecairey.kanji.backend.user;
 
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;

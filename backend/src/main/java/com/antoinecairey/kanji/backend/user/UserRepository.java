@@ -1,4 +1,4 @@
-package com.antoinecairey.kanji.backend;
+package com.antoinecairey.kanji.backend.user;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;

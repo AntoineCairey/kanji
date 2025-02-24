@@ -1,4 +1,4 @@
-package com.antoinecairey.kanji.backend;
+package com.antoinecairey.kanji.backend.user;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
 

@@ -1,4 +1,4 @@
-package com.antoinecairey.kanji.backend;
+package com.antoinecairey.kanji.backend.user;
 
 import lombok.Data;
 import jakarta.persistence.*;

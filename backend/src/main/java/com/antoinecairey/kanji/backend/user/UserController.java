@@ -1,4 +1,4 @@
-package com.antoinecairey.kanji.backend;
+package com.antoinecairey.kanji.backend.user;
 
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
