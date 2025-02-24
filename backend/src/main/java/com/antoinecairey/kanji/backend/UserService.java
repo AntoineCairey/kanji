@@ -13,15 +13,19 @@ public class UserService {
         this.repository = repository;
     }
 
-    public List<User> getAllUsers() {
-        return repository.findAll();
+    public List<UserDTO> getAllUsers() {
+        return repository.findAll().stream()
+                .map(UserMapper.INSTANCE::toDto)
+                .toList();
     }
 
-    public Optional<User> getUserById(Long id) {
-        return repository.findById(id);
+    public Optional<UserDTO> getUserById(Long id) {
+        return repository.findById(id)
+                .map(UserMapper.INSTANCE::toDto);
     }
 
-    public User addUser(User user) {
+    public User addUser(UserDTO userDTO) {
+        User user = UserMapper.INSTANCE.toEntity(userDTO);
         return repository.save(user);
     }
 

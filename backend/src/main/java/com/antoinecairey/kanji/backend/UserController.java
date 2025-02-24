@@ -1,9 +1,9 @@
 package com.antoinecairey.kanji.backend;
 
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
-import java.util.Optional;
 
 @RestController
 @RequestMapping("/api/users")
@@ -15,17 +15,20 @@ public class UserController {
     }
 
     @GetMapping
-    public List<User> getAllUsers() { return service.getAllUsers();
+    public List<UserDTO> getAllUsers() {
+        return service.getAllUsers();
     }
 
     @GetMapping("/{id}")
-    public Optional<User> getUserById(@PathVariable Long id) {
-        return service.getUserById(id);
+    public ResponseEntity<UserDTO> getUserById(@PathVariable Long id) {
+        return service.getUserById(id)
+                .map(ResponseEntity::ok)
+                .orElseGet(() -> ResponseEntity.notFound().build());
     }
 
     @PostMapping
-    public User addUser(@RequestBody User user) {
-        return service.addUser(user);
+    public User addUser(@RequestBody UserDTO dto) {
+        return service.addUser(dto);
     }
 
     @DeleteMapping("/{id}")
