@@ -1,7 +1,8 @@
-import { Component, inject, OnInit, signal } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { Component, effect, inject, OnInit, signal } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
 import { KanjiService } from '../../services/kanji.service';
 import { Kanji } from '../../models/kanji.model';
+import { switchMap } from 'rxjs';
 
 @Component({
   selector: 'app-kanji',
@@ -11,14 +12,32 @@ import { Kanji } from '../../models/kanji.model';
   styleUrl: './kanji.component.css',
 })
 export class KanjiComponent implements OnInit {
+  private router = inject(Router);
   private route = inject(ActivatedRoute);
   private kanjiService = inject(KanjiService);
 
   kanji = signal<Kanji>(new Kanji());
 
+  constructor() {
+    effect(() => (this.kanji().id !== -1 ? console.log(this.kanji()) : null));
+  }
+
   ngOnInit() {
-    const kanjiId = +this.route.snapshot.paramMap.get('id')!;
-    this.kanjiService.get(kanjiId).subscribe((kanji) => this.kanji.set(kanji));
-    console.log('Nouvel ID détecté :', kanjiId);
+    this.route.paramMap
+      .pipe(
+        switchMap((params) => {
+          const id = +params.get('id')!;
+          return this.kanjiService.get(id);
+        }),
+      )
+      .subscribe((result) => this.kanji.set(result));
+  }
+
+  navigateHome() {
+    this.router.navigate(['']);
+  }
+
+  openKanji(kanjiId: number) {
+    this.router.navigate(['kanji', kanjiId]);
   }
 }

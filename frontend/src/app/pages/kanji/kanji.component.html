@@ -5,3 +5,7 @@
   <div>kun: {{ kanji().kun }}</div>
   <div>on :{{ kanji().onn }}</div>
 </div>
+
+<button (click)="navigateHome()">Retour</button>
+<button (click)="openKanji(kanji().id - 1)">Précédent</button>
+<button (click)="openKanji(kanji().id + 1)">Suivant</button>

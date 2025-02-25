@@ -21,7 +21,7 @@ export class KanjiListComponent implements OnInit {
     effect(() => (this.kanjis().length ? console.log(this.kanjis()) : null));
   }
 
-  ngOnInit(): void {
+  ngOnInit() {
     this.kanjiService.getAll().subscribe((result) => this.kanjis.set(result));
   }
 
