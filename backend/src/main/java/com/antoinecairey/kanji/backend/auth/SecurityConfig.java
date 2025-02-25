@@ -1,4 +1,4 @@
-package com.antoinecairey.kanji.backend.user;
+package com.antoinecairey.kanji.backend.auth;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

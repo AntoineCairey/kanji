@@ -2,7 +2,6 @@ package com.antoinecairey.kanji.backend.user;
 
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-
 import java.util.List;
 
 @RestController
@@ -14,7 +13,7 @@ public class UserController {
         this.service = service;
     }
 
-    /* @GetMapping
+    @GetMapping
     public List<UserDTO> getAllUsers() {
         return service.getAllUsers();
     }
@@ -34,5 +33,5 @@ public class UserController {
     @DeleteMapping("/{id}")
     public void deleteUser(@PathVariable Long id) {
         service.deleteUser(id);
-    } */
+    }
 }

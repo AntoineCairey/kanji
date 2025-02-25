@@ -1,4 +1,4 @@
-package com.antoinecairey.kanji.backend.user;
+package com.antoinecairey.kanji.backend.auth;
 
 import io.jsonwebtoken.*;
 import io.jsonwebtoken.security.Keys;

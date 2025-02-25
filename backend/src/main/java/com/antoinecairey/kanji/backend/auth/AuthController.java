@@ -1,27 +1,24 @@
-package com.antoinecairey.kanji.backend.user;
+package com.antoinecairey.kanji.backend.auth;
+
+import com.antoinecairey.kanji.backend.user.User;
+import com.antoinecairey.kanji.backend.user.UserRepository;
 
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.web.bind.annotation.*;
+import lombok.RequiredArgsConstructor;
 
 @RestController
 @RequestMapping("/auth")
+@RequiredArgsConstructor
 public class AuthController {
 
   private final UserRepository userRepository;
   private final PasswordEncoder passwordEncoder;
   private final AuthenticationManager authenticationManager;
   private final JwtUtil jwtUtil;
-
-  public AuthController(UserRepository userRepository, PasswordEncoder passwordEncoder,
-      AuthenticationManager authenticationManager, JwtUtil jwtUtil) {
-    this.userRepository = userRepository;
-    this.passwordEncoder = passwordEncoder;
-    this.authenticationManager = authenticationManager;
-    this.jwtUtil = jwtUtil;
-  }
 
   @PostMapping("/register")
   public ResponseEntity<String> register(@RequestBody User user) {

@@ -4,6 +4,7 @@ import org.springframework.security.core.userdetails.*;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.stereotype.Service;
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class UserService implements UserDetailsService {
@@ -25,4 +26,25 @@ public class UserService implements UserDetailsService {
         List.of(new SimpleGrantedAuthority("ROLE_" + user.getRole())) // ROLE_USER ou ROLE_ADMIN
     );
   }
+
+  public List<UserDTO> getAllUsers() {
+    return userRepository.findAll().stream()
+        .map(UserMapper.INSTANCE::toDto)
+        .toList();
+  }
+
+  public Optional<UserDTO> getUserById(Long id) {
+    return userRepository.findById(id)
+        .map(UserMapper.INSTANCE::toDto);
+  }
+
+  public User addUser(UserDTO userDTO) {
+    User user = UserMapper.INSTANCE.toEntity(userDTO);
+    return userRepository.save(user);
+  }
+
+  public void deleteUser(Long id) {
+    userRepository.deleteById(id);
+  }
+
 }
