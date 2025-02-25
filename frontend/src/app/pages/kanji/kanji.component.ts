@@ -1,8 +1,6 @@
 import { Component, inject, OnInit, signal } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { KanjiService } from '../../services/kanji.service';
-import { of } from 'rxjs';
-import { toSignal } from '@angular/core/rxjs-interop';
 import { Kanji } from '../../models/kanji.model';
 
 @Component({
@@ -15,15 +13,12 @@ import { Kanji } from '../../models/kanji.model';
 export class KanjiComponent implements OnInit {
   private route = inject(ActivatedRoute);
   private kanjiService = inject(KanjiService);
+
   kanji = signal<Kanji>(new Kanji());
 
   ngOnInit() {
-    this.route.paramMap.subscribe((params) => {
-      const kanjiId = +this.route.snapshot.paramMap.get('id')!;
-      this.kanjiService
-        .get(kanjiId)
-        .subscribe((kanji) => this.kanji.set(kanji));
-      console.log('Nouvel ID détecté :', kanjiId);
-    });
+    const kanjiId = +this.route.snapshot.paramMap.get('id')!;
+    this.kanjiService.get(kanjiId).subscribe((kanji) => this.kanji.set(kanji));
+    console.log('Nouvel ID détecté :', kanjiId);
   }
 }
