@@ -27,25 +27,14 @@ export class LoginComponent implements OnDestroy {
 
   invalidCredentials = false;
 
-    login() {
+  login() {
     this.loginSubscription = this.loginService
       .login(this.loginFormGroup.value as Credentials)
       .subscribe({
         next: (result) => this.navigateHome(),
-        error: (error) => {
-          this.invalidCredentials = true;
-          console.log('error');
-        },
+        error: (error) => (this.invalidCredentials = true),
       });
   }
-
-  /* login() {
-    this.http
-      .post('http://localhost:8080/auth/login', this.loginFormGroup.value, {
-        responseType: 'text',
-      })
-      .subscribe((result) => console.log(result));
-  } */
 
   navigateHome() {
     this.router.navigate(['']);

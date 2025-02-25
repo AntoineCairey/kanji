@@ -30,11 +30,14 @@ public class AuthController {
   }
 
   @PostMapping("/login")
-  public ResponseEntity<String> login(@RequestBody User user) {
+  public ResponseEntity<LoginResponse> login(@RequestBody User user) {
     authenticationManager.authenticate(
         new UsernamePasswordAuthenticationToken(user.getUsername(), user.getPassword()));
 
     String token = jwtUtil.generateToken(user.getUsername());
-    return ResponseEntity.ok(token);
+
+    // Retourne un objet LoginResponse avec le token et le username
+    LoginResponse loginResponse = new LoginResponse(token, user.getUsername());
+    return ResponseEntity.ok(loginResponse); // Spring se charge de convertir en JSON
   }
 }
