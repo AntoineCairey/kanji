@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { inject, Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { Kanji } from '../models/kanji.model';
+import { Kanji } from '../../models/kanji.model';
 
 @Injectable({
   providedIn: 'root',

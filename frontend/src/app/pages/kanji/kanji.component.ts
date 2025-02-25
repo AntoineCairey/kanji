@@ -1,6 +1,6 @@
 import { Component, effect, inject, OnInit, signal } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { KanjiService } from '../../services/kanji.service';
+import { KanjiService } from '../../services/kanji/kanji.service';
 import { Kanji } from '../../models/kanji.model';
 import { switchMap } from 'rxjs';
 

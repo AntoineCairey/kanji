@@ -1,0 +1,14 @@
+<p>login works!</p>
+<div>
+  <form (submit)="login()" [formGroup]="loginFormGroup">
+    <h3>Login</h3>
+    <div>username</div>
+    <input type="text" formControlName="username" />
+    <div>password</div>
+    <input type="password" formControlName="password" />
+    <button [disabled]="loginFormGroup.invalid">Login</button>
+    @if (invalidCredentials) {
+      <div>Invalid credentials</div>
+    }
+  </form>
+</div>
