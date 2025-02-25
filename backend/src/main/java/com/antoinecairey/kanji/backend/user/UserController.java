@@ -14,7 +14,7 @@ public class UserController {
         this.service = service;
     }
 
-    @GetMapping
+    /* @GetMapping
     public List<UserDTO> getAllUsers() {
         return service.getAllUsers();
     }
@@ -34,5 +34,5 @@ public class UserController {
     @DeleteMapping("/{id}")
     public void deleteUser(@PathVariable Long id) {
         service.deleteUser(id);
-    }
+    } */
 }

@@ -1,35 +1,28 @@
 package com.antoinecairey.kanji.backend.user;
 
+import org.springframework.security.core.userdetails.*;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.stereotype.Service;
-
 import java.util.List;
-import java.util.Optional;
 
 @Service
-public class UserService {
-    private final UserRepository repository;
+public class UserService implements UserDetailsService {
 
-    public UserService(UserRepository repository) {
-        this.repository = repository;
-    }
+  private final UserRepository userRepository;
 
-    public List<UserDTO> getAllUsers() {
-        return repository.findAll().stream()
-                .map(UserMapper.INSTANCE::toDto)
-                .toList();
-    }
+  public UserService(UserRepository userRepository) {
+    this.userRepository = userRepository;
+  }
 
-    public Optional<UserDTO> getUserById(Long id) {
-        return repository.findById(id)
-                .map(UserMapper.INSTANCE::toDto);
-    }
+  @Override
+  public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
+    User user = userRepository.findByUsername(username)
+        .orElseThrow(() -> new UsernameNotFoundException("Utilisateur non trouvé"));
 
-    public User addUser(UserDTO userDTO) {
-        User user = UserMapper.INSTANCE.toEntity(userDTO);
-        return repository.save(user);
-    }
-
-    public void deleteUser(Long id) {
-        repository.deleteById(id);
-    }
+    return new org.springframework.security.core.userdetails.User(
+        user.getUsername(),
+        user.getPassword(),
+        List.of(new SimpleGrantedAuthority("ROLE_" + user.getRole())) // ROLE_USER ou ROLE_ADMIN
+    );
+  }
 }
