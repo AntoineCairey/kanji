@@ -5,13 +5,12 @@ import java.util.Optional;
 
 import org.springframework.stereotype.Service;
 
+import lombok.RequiredArgsConstructor;
+
 @Service
+@RequiredArgsConstructor
 public class KanjiService {
   private final KanjiRepository repository;
-
-  public KanjiService(KanjiRepository repository) {
-    this.repository = repository;
-  }
 
   public List<KanjiDTO> getAllKanjis() {
     return repository.findAll().stream()

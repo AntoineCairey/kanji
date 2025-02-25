@@ -5,15 +5,14 @@ import java.util.List;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import lombok.RequiredArgsConstructor;
+
 @RestController
 @RequestMapping("/api/kanji")
 @CrossOrigin(origins = "http://localhost:4200")
+@RequiredArgsConstructor
 public class KanjiController {
   private final KanjiService service;
-
-  public KanjiController(KanjiService service) {
-    this.service = service;
-  }
 
   @GetMapping
   public List<KanjiDTO> getAllKanjis() {
