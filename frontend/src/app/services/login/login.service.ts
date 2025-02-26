@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { inject, Injectable, signal } from '@angular/core';
-import { map, Observable, tap } from 'rxjs';
+import { map, Observable, switchMap, tap } from 'rxjs';
 
 export interface Credentials {
   username: string;
@@ -26,5 +26,13 @@ export class LoginService {
         return this.username();
       }),
     );
+  }
+
+  register(credentials: Credentials) {
+    return this.http
+      .post(this.BASE_URL + '/auth/register', credentials, {
+        responseType: 'text',
+      })
+      .pipe(switchMap((_) => this.login(credentials)));
   }
 }

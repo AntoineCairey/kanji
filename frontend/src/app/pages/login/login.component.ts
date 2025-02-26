@@ -31,13 +31,13 @@ export class LoginComponent implements OnDestroy {
     this.loginSubscription = this.loginService
       .login(this.loginFormGroup.value as Credentials)
       .subscribe({
-        next: (result) => this.navigateHome(),
+        next: (result) => this.navigate(['']),
         error: (error) => (this.invalidCredentials = true),
       });
   }
 
-  navigateHome() {
-    this.router.navigate(['']);
+  navigate(route: any) {
+    this.router.navigate(route);
   }
 
   ngOnDestroy(): void {
