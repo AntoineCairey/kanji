@@ -5,11 +5,10 @@ import { Kanji } from '../../models/kanji.model';
 import { switchMap } from 'rxjs';
 
 @Component({
-  selector: 'app-kanji',
-  standalone: true,
-  imports: [],
-  templateUrl: './kanji.component.html',
-  styleUrl: './kanji.component.css',
+    selector: 'app-kanji',
+    imports: [],
+    templateUrl: './kanji.component.html',
+    styleUrl: './kanji.component.css'
 })
 export class KanjiComponent implements OnInit {
   private router = inject(Router);

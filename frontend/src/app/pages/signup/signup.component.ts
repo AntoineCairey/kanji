@@ -4,11 +4,10 @@ import { Router } from '@angular/router';
 import { Credentials, LoginService } from '../../services/login/login.service';
 
 @Component({
-  selector: 'app-signup',
-  standalone: true,
-  imports: [ReactiveFormsModule],
-  templateUrl: './signup.component.html',
-  styleUrl: './signup.component.css',
+    selector: 'app-signup',
+    imports: [ReactiveFormsModule],
+    templateUrl: './signup.component.html',
+    styleUrl: './signup.component.css'
 })
 export class SignupComponent {
   private fb = inject(FormBuilder);

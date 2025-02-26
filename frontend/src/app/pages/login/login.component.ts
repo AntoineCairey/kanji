@@ -6,11 +6,10 @@ import { Credentials, LoginService } from '../../services/login/login.service';
 import { HttpClient } from '@angular/common/http';
 
 @Component({
-  selector: 'app-login',
-  standalone: true,
-  imports: [ReactiveFormsModule],
-  templateUrl: './login.component.html',
-  styleUrl: './login.component.css',
+    selector: 'app-login',
+    imports: [ReactiveFormsModule],
+    templateUrl: './login.component.html',
+    styleUrl: './login.component.css'
 })
 export class LoginComponent implements OnDestroy {
   private formBuilder = inject(FormBuilder);
