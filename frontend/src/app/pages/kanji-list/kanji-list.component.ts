@@ -21,7 +21,9 @@ export class KanjiListComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.kanjiService.fetch();
+    if (!this.kanjis().length) {
+      this.kanjiService.fetch();
+    }
   }
 
   openKanji(kanjiId: number) {
