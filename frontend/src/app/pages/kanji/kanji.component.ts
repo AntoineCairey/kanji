@@ -4,10 +4,11 @@ import { KanjiService } from '../../services/kanji/kanji.service';
 import { Kanji } from '../../models/kanji.model';
 import { switchMap } from 'rxjs';
 import { MatButtonModule } from '@angular/material/button';
+import { TileComponent } from '../../components/tile/tile.component';
 
 @Component({
   selector: 'app-kanji',
-  imports: [MatButtonModule],
+  imports: [MatButtonModule, TileComponent],
   templateUrl: './kanji.component.html',
   styleUrl: './kanji.component.css',
 })

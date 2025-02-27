@@ -1,12 +1,14 @@
 <div class="container">
   <button mat-stroked-button (click)="navigateHome()">Retour</button>
 
-  <div class="content">
+  <!-- <div class="content">
     <h3>{{ kanji().symbol }}</h3>
     <div>fr : {{ kanji().fr }}</div>
     <div>kun : {{ kanji().kun }}</div>
     <div>on : {{ kanji().onn }}</div>
-  </div>
+  </div> -->
+
+  <app-tile [kanji]="kanji()" />
 
   <div>
     <button mat-flat-button (click)="openKanji(kanji().id - 1)">
