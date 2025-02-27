@@ -1,6 +1,8 @@
-<div class="tile">
-  <h3>{{ kanji().symbol}}</h3>
-  <div>meaning: {{ kanji().fr }}</div>
-  <div>kun: {{ kanji().kun }}</div>
-  <div>on :{{ kanji().onn }}</div>
-</div>
+<mat-card appearance="outlined" class="tile">
+  <mat-card-content>
+    <h3>{{ kanji().symbol }}</h3>
+    <div>meaning: {{ kanji().fr }}</div>
+    <div>kun: {{ kanji().kun }}</div>
+    <div>on :{{ kanji().onn }}</div>
+  </mat-card-content>
+</mat-card>

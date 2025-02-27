@@ -1,13 +1,11 @@
 package com.antoinecairey.kanji.backend.user;
 
+import java.util.List;
+import java.util.Optional;
+import lombok.RequiredArgsConstructor;
 import org.springframework.security.core.userdetails.*;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.stereotype.Service;
-
-import lombok.RequiredArgsConstructor;
-
-import java.util.List;
-import java.util.Optional;
 
 @Service
 @RequiredArgsConstructor
@@ -35,6 +33,11 @@ public class UserService implements UserDetailsService {
 
   public Optional<UserDTO> getUserById(Long id) {
     return userRepository.findById(id)
+        .map(UserMapper.INSTANCE::toDto);
+  }
+
+  public Optional<UserDTO> getUserByUsername(String username) {
+    return userRepository.findByUsername(username)
         .map(UserMapper.INSTANCE::toDto);
   }
 
