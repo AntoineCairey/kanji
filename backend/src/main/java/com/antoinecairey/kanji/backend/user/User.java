@@ -3,9 +3,9 @@ package com.antoinecairey.kanji.backend.user;
 import lombok.Data;
 import jakarta.persistence.*;
 
-@Data // Génère automatiquement getters, setters, equals, hashCode, toString
+@Data
 @Entity
-@Table(name = "users")
+@Table(name = "user")
 public class User {
 
     @Id
@@ -18,5 +18,6 @@ public class User {
     @Column(nullable = false)
     private String password;
 
+    @Column(nullable = false)
     private String role;
 }
