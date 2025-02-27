@@ -3,12 +3,13 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { KanjiService } from '../../services/kanji/kanji.service';
 import { Kanji } from '../../models/kanji.model';
 import { switchMap } from 'rxjs';
+import { MatButtonModule } from '@angular/material/button';
 
 @Component({
-    selector: 'app-kanji',
-    imports: [],
-    templateUrl: './kanji.component.html',
-    styleUrl: './kanji.component.css'
+  selector: 'app-kanji',
+  imports: [MatButtonModule],
+  templateUrl: './kanji.component.html',
+  styleUrl: './kanji.component.css',
 })
 export class KanjiComponent implements OnInit {
   private router = inject(Router);

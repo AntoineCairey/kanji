@@ -1,6 +1,7 @@
-/* .tile {
-  border: 1px solid black;
-  width: 300px;
-  padding: 20px;
+.tile {
+  width: 150px;
 }
- */
+
+h3 {
+  text-align: center;
+}
