@@ -1,27 +1,20 @@
 <div class="container">
   <button mat-stroked-button (click)="navigateHome()">Retour</button>
 
-  <!-- <div class="content">
-    <h3>{{ kanji().symbol }}</h3>
-    <div>fr : {{ kanji().fr }}</div>
-    <div>kun : {{ kanji().kun }}</div>
-    <div>on : {{ kanji().onn }}</div>
-  </div> -->
-
-  <app-tile [kanji]="kanji()" />
+  <app-tile [kanji]="kanjis()[currentIndex()]" />
 
   <div>
     <button
       mat-flat-button
       (click)="goToPrevious()"
-      [disabled]="currentIndex === 0"
+      [disabled]="currentIndex() === 0"
     >
       Précédent
     </button>
     <button
       mat-flat-button
       (click)="goToNext()"
-      [disabled]="currentIndex === kanjis.length - 1"
+      [disabled]="currentIndex() === kanjis().length - 1"
     >
       Suivant
     </button>

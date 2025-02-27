@@ -14,14 +14,14 @@ export class KanjiListComponent implements OnInit {
   private router = inject(Router);
   private kanjiService = inject(KanjiService);
 
-  kanjis = signal<Kanji[]>([]);
+  kanjis = this.kanjiService.kanjis;
 
   constructor() {
     effect(() => (this.kanjis().length ? console.log(this.kanjis()) : null));
   }
 
   ngOnInit() {
-    this.kanjiService.getAll().subscribe((result) => this.kanjis.set(result));
+    this.kanjiService.fetch();
   }
 
   openKanji(kanjiId: number) {
