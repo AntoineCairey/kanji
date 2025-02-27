@@ -28,6 +28,13 @@ export class LoginService {
     );
   }
 
+  getUser() {
+    return this.http.get(this.BASE_URL + '/api/users/me').pipe(
+      tap((result: any) => this.username.set(result['username'])),
+      map((_) => this.username()),
+    );
+  }
+
   register(credentials: Credentials) {
     return this.http
       .post(this.BASE_URL + '/auth/register', credentials, {
