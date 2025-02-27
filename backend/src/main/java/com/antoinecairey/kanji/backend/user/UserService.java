@@ -3,26 +3,38 @@ package com.antoinecairey.kanji.backend.user;
 import java.util.List;
 import java.util.Optional;
 import lombok.RequiredArgsConstructor;
-import org.springframework.security.core.userdetails.*;
-import org.springframework.security.core.authority.SimpleGrantedAuthority;
+import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.security.authentication.AuthenticationManager;
+import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.stereotype.Service;
+
+import com.antoinecairey.kanji.backend.auth.JwtUtil;
+import com.antoinecairey.kanji.backend.auth.LoginResponse;
+import com.antoinecairey.kanji.backend.card.CardInitService;
 
 @Service
 @RequiredArgsConstructor
-public class UserService implements UserDetailsService {
+public class UserService {
 
   private final UserRepository userRepository;
+  private final CardInitService cardInitService;
+  private final PasswordEncoder passwordEncoder;
+  private final AuthenticationManager authenticationManager;
+  private final JwtUtil jwtUtil;
 
-  @Override
-  public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-    User user = userRepository.findByUsername(username)
-        .orElseThrow(() -> new UsernameNotFoundException("Utilisateur non trouvé"));
+  public User createUser(User user) {
+    user.setPassword(passwordEncoder.encode(user.getPassword()));
+    user.setRole("USER");
+    User savedUser = userRepository.save(user);
+    cardInitService.initializeCardsForUser(savedUser);
+    return savedUser;
+  }
 
-    return new org.springframework.security.core.userdetails.User(
-        user.getUsername(),
-        user.getPassword(),
-        List.of(new SimpleGrantedAuthority("ROLE_" + user.getRole())) // ROLE_USER ou ROLE_ADMIN
-    );
+  public LoginResponse login(String username, String password) {
+    authenticationManager.authenticate(
+        new UsernamePasswordAuthenticationToken(username, password));
+    String token = jwtUtil.generateToken(username);
+    return new LoginResponse(token, username);
   }
 
   public List<UserDTO> getAllUsers() {
