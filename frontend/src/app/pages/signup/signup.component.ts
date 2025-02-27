@@ -1,13 +1,27 @@
 import { Component, inject } from '@angular/core';
-import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
+import {
+  FormBuilder,
+  FormsModule,
+  ReactiveFormsModule,
+  Validators,
+} from '@angular/forms';
 import { Router } from '@angular/router';
 import { Credentials, LoginService } from '../../services/login/login.service';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material/input';
+import { MatButtonModule } from '@angular/material/button';
 
 @Component({
-    selector: 'app-signup',
-    imports: [ReactiveFormsModule],
-    templateUrl: './signup.component.html',
-    styleUrl: './signup.component.css'
+  selector: 'app-signup',
+  imports: [
+    ReactiveFormsModule,
+    FormsModule,
+    MatFormFieldModule,
+    MatInputModule,
+    MatButtonModule,
+  ],
+  templateUrl: './signup.component.html',
+  styleUrl: './signup.component.css',
 })
 export class SignupComponent {
   private fb = inject(FormBuilder);

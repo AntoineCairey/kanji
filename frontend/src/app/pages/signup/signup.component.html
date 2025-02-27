@@ -1,33 +1,34 @@
 <div class="container">
   <h2>Inscription</h2>
-
   <form [formGroup]="signupForm" (submit)="signup()">
-    <div class="form-group">
-      <label for="username">Username</label>
-      <br>
-      <input type="text" id="username" formControlName="username" />
+    <mat-form-field hideRequiredMarker>
+      <mat-label for="username">Username</mat-label>
+      <input matInput type="text" id="username" formControlName="username" />
       @if (signupForm.get("username")?.hasError("required")) {
-        <small>Username required</small>
+        <mat-error>Username required</mat-error>
       }
       @if (signupForm.get("username")?.hasError("minlength")) {
-        <small>Must be at least 3 characters</small>
+        <mat-error>Must be at least 3 characters</mat-error>
       }
-    </div>
+    </mat-form-field>
 
-    <div class="form-group">
-      <label for="password">Password</label>
-      <br>
-      <input type="text" id="password" formControlName="password" />
+    <mat-form-field hideRequiredMarker>
+      <mat-label for="password">Password</mat-label>
+      <input matInput type="password" id="password" formControlName="password" />
       @if (signupForm.get("password")?.hasError("required")) {
-        <small>Password required</small>
+        <mat-error>Password required</mat-error>
       }
       @if (signupForm.get("password")?.hasError("minlength")) {
-        <small>Must be at least 3 characters</small>
+        <mat-error>Must be at least 3 characters</mat-error>
       }
-    </div>
+    </mat-form-field>
 
-    <button type="submit" [disabled]="signupForm.invalid">S'inscrire</button>
+    <button mat-flat-button type="submit" [disabled]="signupForm.invalid">
+      S'inscrire
+    </button>
   </form>
-  <br />
-  <button (click)="navigate(['login'])">J'ai déjà un compte</button>
+
+  <button mat-stroked-button (click)="navigate(['login'])">
+    J'ai déjà un compte
+  </button>
 </div>
