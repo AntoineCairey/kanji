@@ -11,9 +11,19 @@
   <app-tile [kanji]="kanji()" />
 
   <div>
-    <button mat-flat-button (click)="openKanji(kanji().id - 1)">
+    <button
+      mat-flat-button
+      (click)="goToPrevious()"
+      [disabled]="currentIndex === 0"
+    >
       Précédent
     </button>
-    <button mat-flat-button (click)="openKanji(kanji().id + 1)">Suivant</button>
+    <button
+      mat-flat-button
+      (click)="goToNext()"
+      [disabled]="currentIndex === kanjis.length - 1"
+    >
+      Suivant
+    </button>
   </div>
 </div>

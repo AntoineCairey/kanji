@@ -5,10 +5,10 @@ import { KanjiService } from '../../services/kanji/kanji.service';
 import { Kanji } from '../../models/kanji.model';
 
 @Component({
-    selector: 'app-kanji-list',
-    imports: [TileComponent],
-    templateUrl: './kanji-list.component.html',
-    styleUrl: './kanji-list.component.css'
+  selector: 'app-kanji-list',
+  imports: [TileComponent],
+  templateUrl: './kanji-list.component.html',
+  styleUrl: './kanji-list.component.css',
 })
 export class KanjiListComponent implements OnInit {
   private router = inject(Router);
