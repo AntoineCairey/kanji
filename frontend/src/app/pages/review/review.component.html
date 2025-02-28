@@ -1,1 +1,4 @@
 <p>review works!</p>
+<app-tile [kanji]="card().kanji" />
+<button (click)="reviewCard(card().id, false)">Difficile</button>
+<button (click)="reviewCard(card().id, true)">Facile</button>
