@@ -1,38 +1,26 @@
 package com.antoinecairey.kanji.backend.kanji;
 
 import java.util.List;
-
-import org.springframework.http.ResponseEntity;
+import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
-import lombok.RequiredArgsConstructor;
+import com.antoinecairey.kanji.backend.word.Word;
+import com.antoinecairey.kanji.backend.word.WordService;
 
 @RestController
 @RequestMapping("/api/kanji")
-//@CrossOrigin(origins = "http://localhost:4200")
 @RequiredArgsConstructor
 public class KanjiController {
-  private final KanjiService service;
+  private final KanjiService kanjiService;
+  private final WordService wordService;
 
   @GetMapping
   public List<KanjiDTO> getAllKanjis() {
-    return service.getAllKanjis();
+    return kanjiService.getAllKanjis();
   }
 
-  @GetMapping("/{id}")
-  public ResponseEntity<KanjiDTO> getKanjiById(@PathVariable Long id) {
-    return service.getKanjiById(id)
-        .map(ResponseEntity::ok)
-        .orElseGet(() -> ResponseEntity.notFound().build());
-  }
-
-  @PostMapping
-  public Kanji addKanji(@RequestBody KanjiDTO dto) {
-    return service.addKanji(dto);
-  }
-
-  @DeleteMapping("/{id}")
-  public void deleteKanji(@PathVariable Long id) {
-    service.deleteKanji(id);
+  @GetMapping("/{kanji}/words")
+  public List<Word> getWordsContainingKanji(@PathVariable String kanji) {
+    return wordService.getWordsContainingKanji(kanji);
   }
 }
