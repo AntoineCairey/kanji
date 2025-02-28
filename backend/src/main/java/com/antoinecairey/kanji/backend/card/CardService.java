@@ -33,4 +33,9 @@ public class CardService {
 
     return cardRepository.save(card);
   }
+
+  // Récupérer les cartes non révisées pour un utilisateur
+  public List<Card> getUnreviewedCardsForUser(Long userId) {
+    return cardRepository.findTop5UnreviewedCardsForUser(userId);
+  }
 }
