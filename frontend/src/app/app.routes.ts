@@ -6,6 +6,7 @@ import { isLoggedInGuard } from './guards/is-logged-in.guard';
 import { NotFoundComponent } from './pages/not-found/not-found.component';
 import { SignupComponent } from './pages/signup/signup.component';
 import { ReviewComponent } from './pages/review/review.component';
+import { HomeComponent } from './pages/home/home.component';
 
 export const routes: Routes = [
   {
@@ -15,6 +16,11 @@ export const routes: Routes = [
   },
   {
     path: 'home',
+    component: HomeComponent,
+    canActivate: [isLoggedInGuard],
+  },
+  {
+    path: 'list',
     component: KanjiListComponent,
     canActivate: [isLoggedInGuard],
   },

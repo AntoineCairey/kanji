@@ -1,5 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { inject, Injectable, signal } from '@angular/core';
+import { Router } from '@angular/router';
 import { map, Observable, switchMap, tap } from 'rxjs';
 
 export interface Credentials {
@@ -13,8 +14,9 @@ export interface Credentials {
 export class LoginService {
   private http = inject(HttpClient);
   private BASE_URL = 'http://localhost:8080';
+  private router = inject(Router);
 
-  username = signal(undefined);
+  username = signal(null);
 
   login(credentials: Credentials) {
     return this.http.post(this.BASE_URL + '/auth/login', credentials).pipe(
@@ -41,5 +43,11 @@ export class LoginService {
         responseType: 'text',
       })
       .pipe(switchMap((_) => this.login(credentials)));
+  }
+
+  logout() {
+    localStorage.removeItem('token');
+    this.username.set(null);
+    this.router.navigate(['login']);
   }
 }
