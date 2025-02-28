@@ -2,7 +2,7 @@
   <mat-card-content>
     <h3>{{ kanji()?.symbol }}</h3>
     <div>fr : {{ kanji()?.fr }}</div>
-    <div>kun : {{ kanji()?.kun }}</div>
-    <div>on : {{ kanji()?.onn }}</div>
+    <div>kun : {{ kanji()?.kun }} ({{ toRomaji(kanji()?.kun) }})</div>
+    <div>on : {{ kanji()?.onn }} ({{ toRomaji(kanji()?.onn) }})</div>
   </mat-card-content>
 </mat-card>

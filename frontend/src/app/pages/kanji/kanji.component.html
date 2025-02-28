@@ -5,7 +5,10 @@
 
   <div class="words">
     @for (word of words(); track word.id) {
-      <div>{{ `${word.kanji} (${word.kana}) : ${word.fr}` }}</div>
+      <div>
+        {{ word.kanji }} ({{ word.kana }} {{ toRomaji(word.kana) }}) :
+        {{ word.fr }}
+      </div>
     }
   </div>
 

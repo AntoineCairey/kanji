@@ -1,4 +1,11 @@
-import { Component, computed, inject, OnInit, signal } from '@angular/core';
+import {
+  Component,
+  computed,
+  effect,
+  inject,
+  OnInit,
+  signal,
+} from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { KanjiService } from '../../services/kanji/kanji.service';
 import { MatButtonModule } from '@angular/material/button';
@@ -23,6 +30,14 @@ export class KanjiComponent implements OnInit {
   currentKanji = computed(() => this.kanjis()[this.currentIndex()]);
   words = this.kanjiService.words;
 
+  constructor() {
+    effect(() => {
+      if (this.currentKanji()) {
+        this.kanjiService.fetchWords(this.currentKanji().symbol);
+      }
+    });
+  }
+
   ngOnInit(): void {
     if (this.kanjis().length === 0) {
       this.kanjiService.fetchKanjis();
@@ -30,7 +45,7 @@ export class KanjiComponent implements OnInit {
     this.route.paramMap.subscribe((params) => {
       let id = Number(params.get('id'));
       this.currentId.set(id);
-      this.kanjiService.fetchWords(this.currentKanji().symbol);
+      console.log(this.currentKanji());
     });
   }
 
@@ -55,4 +70,6 @@ export class KanjiComponent implements OnInit {
   navigateHome() {
     this.router.navigate(['']);
   }
+
+  toRomaji = this.kanjiService.toRomaji;
 }
