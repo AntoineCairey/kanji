@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { inject, Injectable, signal } from '@angular/core';
-import { Observable, tap, of } from 'rxjs';
 import { Kanji } from '../../models/kanji.model';
+import { Word } from '../../models/word.model';
 
 @Injectable({
   providedIn: 'root',
@@ -10,14 +10,17 @@ export class KanjiService {
   private BASE_URL = 'http://localhost:8080/api/kanji';
   private http = inject(HttpClient);
   kanjis = signal<Kanji[]>([]);
+  words = signal<Word[]>([]);
 
-  fetch() {
+  fetchKanjis() {
     this.http.get<Kanji[]>(this.BASE_URL).subscribe((data) => {
       this.kanjis.set(data);
     });
   }
 
-  get(id: number): Observable<Kanji> {
-    return this.http.get<Kanji>(this.BASE_URL + '/' + id);
+  fetchWords(symbol: string) {
+    this.http
+      .get<Word[]>(`${this.BASE_URL}/${symbol}/words`)
+      .subscribe((data) => this.words.set(data));
   }
 }

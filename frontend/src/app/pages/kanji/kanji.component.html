@@ -3,6 +3,12 @@
 
   <app-tile [kanji]="kanjis()[currentIndex()]" />
 
+  <div class="words">
+    @for (word of words(); track word.id) {
+      <div>{{ `${word.kanji} (${word.kana}) : ${word.fr}` }}</div>
+    }
+  </div>
+
   <div>
     <button
       mat-flat-button

@@ -20,14 +20,17 @@ export class KanjiComponent implements OnInit {
   currentIndex = computed(() => {
     return this.kanjis().findIndex((k) => k.id === this.currentId());
   });
+  currentKanji = computed(() => this.kanjis()[this.currentIndex()]);
+  words = this.kanjiService.words;
 
   ngOnInit(): void {
     if (this.kanjis().length === 0) {
-      this.kanjiService.fetch();
+      this.kanjiService.fetchKanjis();
     }
     this.route.paramMap.subscribe((params) => {
       let id = Number(params.get('id'));
       this.currentId.set(id);
+      this.kanjiService.fetchWords(this.currentKanji().symbol);
     });
   }
 

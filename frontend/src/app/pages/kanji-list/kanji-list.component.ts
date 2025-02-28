@@ -22,7 +22,7 @@ export class KanjiListComponent implements OnInit {
 
   ngOnInit() {
     if (!this.kanjis().length) {
-      this.kanjiService.fetch();
+      this.kanjiService.fetchKanjis();
     }
   }
 
