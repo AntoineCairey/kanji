@@ -1,4 +1,31 @@
-<p>review works!</p>
-<app-tile [kanji]="card().kanji" />
-<button (click)="reviewCard(card().id, false)">Difficile</button>
-<button (click)="reviewCard(card().id, true)">Facile</button>
+<div class="container">
+  <div class="card">
+    <div class="question">
+      {{ !card().isReverse ? card().kanji.symbol : card().kanji.fr }}
+    </div>
+    @if (isAnswer()) {
+      <div class="answer">
+        <div>
+          {{ !card().isReverse ? card().kanji.fr : card().kanji.symbol }}
+        </div>
+        <div>{{ card().kanji.kun }}</div>
+        <div>{{ card().kanji.onn }}</div>
+      </div>
+    }
+  </div>
+
+  <div class="buttons">
+    @if (!isAnswer()) {
+      <button mat-flat-button (click)="showAnswer()">
+        Afficher la réponse
+      </button>
+    } @else {
+      <button mat-flat-button (click)="reviewCard(card().id, false)">
+        Difficile
+      </button>
+      <button mat-flat-button (click)="reviewCard(card().id, true)">
+        Facile
+      </button>
+    }
+  </div>
+</div>
