@@ -48,7 +48,11 @@ public class UserService {
         .map(UserMapper.INSTANCE::toDto);
   }
 
-  public Optional<UserDTO> getUserByUsername(String username) {
+  public Optional<User> getUserByUsername(String username) {
+    return userRepository.findByUsername(username);
+  }
+
+  public Optional<UserDTO> getUserDtoByUsername(String username) {
     return userRepository.findByUsername(username)
         .map(UserMapper.INSTANCE::toDto);
   }

@@ -31,7 +31,7 @@ public class UserController {
     public ResponseEntity<UserDTO> getMyUser(@RequestHeader("Authorization") String authHeader) {
         String token = authHeader.substring(7);
         String username = jwtUtil.extractUsername(token);
-        return service.getUserByUsername(username)
+        return service.getUserDtoByUsername(username)
                 .map(ResponseEntity::ok)
                 .orElseGet(() -> ResponseEntity.notFound().build());
     }

@@ -16,6 +16,11 @@ public class CardService {
     return cardRepository.findByUserIdAndNextReviewLessThanEqual(userId, today);
   }
 
+  // Récupérer les cartes non révisées pour un utilisateur
+  public List<Card> getCardsToDiscover(Long userId) {
+    return cardRepository.findTop5UnreviewedCardsForUser(userId);
+  }
+  
   // Mettre à jour une carte après révision
   public Card updateCardAfterReview(Long cardId, boolean isSuccessful) {
     Card card = cardRepository.findById(cardId)
@@ -34,8 +39,4 @@ public class CardService {
     return cardRepository.save(card);
   }
 
-  // Récupérer les cartes non révisées pour un utilisateur
-  public List<Card> getUnreviewedCardsForUser(Long userId) {
-    return cardRepository.findTop5UnreviewedCardsForUser(userId);
-  }
 }
