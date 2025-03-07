@@ -1,6 +1,20 @@
-.container {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 20px;
+header {
+  text-align: center;
+}
+
+/* Appliquer une largeur pleine sur mobile */
+main {
+  width: 100%;
+  padding: 16px;
+  /* padding-top: 0; */
+}
+
+/* Ajouter des marges latérales sur les écrans plus larges */
+@media (width >= 768px) {
+  main {
+    width: 768px;
+    margin: 0 auto;
+    width: 80%;
+    max-width: 1200px;
+  }
 }

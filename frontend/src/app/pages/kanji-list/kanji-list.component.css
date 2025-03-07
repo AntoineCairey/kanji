@@ -1,6 +1,13 @@
 .container {
-  display: flex;
+  /* display: flex;
   flex-direction: row;
   flex-wrap: wrap;
-  gap: 20px;
+  justify-content: center;
+  gap: 10px; */
+
+  display: grid;
+  gap: 10px; /* Espace entre les tuiles */
+  grid-template-columns: repeat(auto-fit, minmax(105px, 1fr));
+  grid-auto-rows: 1fr; /* Assure que les tuiles restent carrées */
+  width: 100%;
 }
