@@ -67,8 +67,8 @@ export class KanjiComponent implements OnInit {
     }
   }
 
-  navigateHome() {
-    this.router.navigate(['']);
+  navigateBack() {
+    this.router.navigate(['list']);
   }
 
   toRomaji = this.kanjiService.toRomaji;

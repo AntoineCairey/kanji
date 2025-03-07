@@ -20,4 +20,5 @@ public class Kanji {
 
   private String kun;
   private String onn;
+  private Integer jlpt;
 }

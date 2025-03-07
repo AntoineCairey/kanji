@@ -15,4 +15,5 @@ public class Word {
   private String kanji;
   private String kana;
   private String fr;
+  private Integer jlpt;
 }

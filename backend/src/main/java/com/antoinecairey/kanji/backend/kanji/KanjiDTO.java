@@ -16,4 +16,5 @@ public class KanjiDTO {
   private String fr;
   private String kun;
   private String onn;
+  private Integer jlpt;
 }
