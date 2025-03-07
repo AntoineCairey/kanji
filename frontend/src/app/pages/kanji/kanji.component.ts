@@ -9,11 +9,10 @@ import {
 import { ActivatedRoute, Router } from '@angular/router';
 import { KanjiService } from '../../services/kanji/kanji.service';
 import { MatButtonModule } from '@angular/material/button';
-import { TileComponent } from '../../components/tile/tile.component';
 
 @Component({
   selector: 'app-kanji',
-  imports: [MatButtonModule, TileComponent],
+  imports: [MatButtonModule],
   templateUrl: './kanji.component.html',
   styleUrl: './kanji.component.css',
 })
@@ -65,10 +64,6 @@ export class KanjiComponent implements OnInit {
         this.kanjis()[this.currentIndex() + 1].id,
       ]);
     }
-  }
-
-  navigateBack() {
-    this.router.navigate(['list']);
   }
 
   toRomaji = this.kanjiService.toRomaji;

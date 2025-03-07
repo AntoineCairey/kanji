@@ -1,31 +1,44 @@
-<div class="container">
-  <button mat-stroked-button (click)="navigateBack()">Retour</button>
+<div class="symbol">{{ currentKanji().symbol }}</div>
 
-  <app-tile [kanji]="kanjis()[currentIndex()]" />
+<h3>Sens</h3>
+<div>{{ currentKanji().fr }}</div>
 
-  <div class="words">
-    @for (word of words(); track word.id) {
-      <div>
-        {{ word.kanji }} ({{ word.kana }} {{ toRomaji(word.kana) }}) :
-        {{ word.fr }}
-      </div>
-    }
-  </div>
-
-  <div>
-    <button
-      mat-flat-button
-      (click)="goToPrevious()"
-      [disabled]="currentIndex() === 0"
-    >
-      Précédent
-    </button>
-    <button
-      mat-flat-button
-      (click)="goToNext()"
-      [disabled]="currentIndex() === kanjis().length - 1"
-    >
-      Suivant
-    </button>
-  </div>
+<h3>Lectures</h3>
+<div class="readings">
+  <h4>kun</h4>
+  <h4>on</h4>
+  <p>{{ currentKanji().kun }}</p>
+  <p>{{ currentKanji().onn }}</p>
+  <p>{{ toRomaji(currentKanji().kun) }}</p>
+  <p>{{ toRomaji(currentKanji().onn) }}</p>
 </div>
+
+<div class="words">
+  <h3>Vocabulaire</h3>
+  @for (word of words(); track word.id; let i = $index) {
+    <div class="word">
+      {{ word.kanji }} ({{ word.kana }} {{ toRomaji(word.kana) }}) :
+      {{ word.fr }}
+    </div>
+    @if (i < words().length - 1) {
+      <hr />
+    }
+  }
+</div>
+
+<footer class="buttons">
+  <button
+    mat-flat-button
+    (click)="goToPrevious()"
+    [disabled]="currentIndex() === 0"
+  >
+    Précédent
+  </button>
+  <button
+    mat-flat-button
+    (click)="goToNext()"
+    [disabled]="currentIndex() === kanjis().length - 1"
+  >
+    Suivant
+  </button>
+</footer>

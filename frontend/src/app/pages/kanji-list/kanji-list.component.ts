@@ -2,7 +2,6 @@ import { Component, effect, inject, OnInit, signal } from '@angular/core';
 import { TileComponent } from '../../components/tile/tile.component';
 import { Router } from '@angular/router';
 import { KanjiService } from '../../services/kanji/kanji.service';
-import { Kanji } from '../../models/kanji.model';
 
 @Component({
   selector: 'app-kanji-list',

@@ -1,12 +1,27 @@
 header {
+  position: fixed;
+  width: 100%;
   text-align: center;
+  background-color: lightblue;
+  z-index: 2;
+
+  .back-button {
+    position: fixed;
+    top: 0;
+    left: 0;
+    font-size: 36px;
+  }
+
+  h1 {
+    margin: 12px;
+  }
 }
 
 /* Appliquer une largeur pleine sur mobile */
 main {
   width: 100%;
   padding: 16px;
-  /* padding-top: 0; */
+  padding-top: 80px;
 }
 
 /* Ajouter des marges latérales sur les écrans plus larges */
@@ -14,7 +29,7 @@ main {
   main {
     width: 768px;
     margin: 0 auto;
-    width: 80%;
-    max-width: 1200px;
+    /* width: 80%;
+    max-width: 1200px; */
   }
 }

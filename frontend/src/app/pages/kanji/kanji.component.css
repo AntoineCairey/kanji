@@ -1,13 +1,41 @@
-.container {
+.symbol {
+  font-size: 64px;
+  margin-top: 16px;
+}
+
+h3 {
+  margin-bottom: 4px;
+}
+
+.readings {
+  width: 100%;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-template-rows: repeat(3, 1fr);
+
+  * {
+    margin: 0;
+  }
+}
+
+.words {
+  margin-bottom: 70px;
+}
+
+.word {
+  margin-block: 8px;
+}
+
+.buttons {
+  position: fixed;
+  background-color: lightblue;
+  bottom: 0;
+  left: 0;
+  width: 100%;
   display: flex;
-  flex-direction: column;
-  align-items: center;
-}
+  justify-content: space-evenly;
 
-button {
-  margin-right: 10px;
-}
-
-app-tile {
-  margin-block: 50px;
+  button {
+    margin: 10px;
+  }
 }
