@@ -25,7 +25,7 @@ export class KanjiListComponent implements OnInit {
     }
   }
 
-  openKanji(kanjiId: number) {
-    this.router.navigate(['kanji', kanjiId]);
+  openKanji(symbol: string) {
+    this.router.navigate(['kanji', symbol]);
   }
 }

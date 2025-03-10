@@ -23,7 +23,7 @@ export const routes: Routes = [
     component: KanjiListComponent,
   },
   {
-    path: 'kanji/:id',
+    path: 'kanji/:symbol',
     component: KanjiComponent,
   },
   {

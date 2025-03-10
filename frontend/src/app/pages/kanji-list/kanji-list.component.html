@@ -1,5 +1,5 @@
 <div class="container">
   @for (kanji of kanjis(); track kanji.id) {
-    <app-tile [kanji]="kanji" (click)="openKanji(kanji.id)" />
+    <app-tile [kanji]="kanji" (click)="openKanji(kanji.symbol)" />
   }
 </div>

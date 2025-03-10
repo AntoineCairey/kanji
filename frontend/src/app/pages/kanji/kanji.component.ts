@@ -22,9 +22,9 @@ export class KanjiComponent implements OnInit {
   private kanjiService = inject(KanjiService);
 
   kanjis = this.kanjiService.kanjis;
-  currentId = signal(0);
+  currentSymbol = signal('');
   currentIndex = computed(() => {
-    return this.kanjis().findIndex((k) => k.id === this.currentId());
+    return this.kanjis().findIndex((k) => k.symbol === this.currentSymbol());
   });
   currentKanji = computed(() => this.kanjis()[this.currentIndex()]);
   words = this.kanjiService.words;
@@ -42,8 +42,8 @@ export class KanjiComponent implements OnInit {
       this.kanjiService.fetchKanjis();
     }
     this.route.paramMap.subscribe((params) => {
-      let id = Number(params.get('id'));
-      this.currentId.set(id);
+      let symbol = params.get('symbol');
+      this.currentSymbol.set(symbol!);
       console.log(this.currentKanji());
     });
   }
@@ -52,7 +52,7 @@ export class KanjiComponent implements OnInit {
     if (this.currentIndex() > 0) {
       this.router.navigate([
         '/kanji',
-        this.kanjis()[this.currentIndex() - 1].id,
+        this.kanjis()[this.currentIndex() - 1].symbol,
       ]);
     }
   }
@@ -61,7 +61,7 @@ export class KanjiComponent implements OnInit {
     if (this.currentIndex() < this.kanjis().length - 1) {
       this.router.navigate([
         '/kanji',
-        this.kanjis()[this.currentIndex() + 1].id,
+        this.kanjis()[this.currentIndex() + 1].symbol,
       ]);
     }
   }
