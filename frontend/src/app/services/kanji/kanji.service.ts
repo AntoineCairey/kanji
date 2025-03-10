@@ -3,25 +3,25 @@ import { inject, Injectable, signal } from '@angular/core';
 import { Kanji } from '../../models/kanji.model';
 import { Word } from '../../models/word.model';
 import { toRomaji } from 'wanakana';
+import { environment } from '../../../environments/environment';
 
 @Injectable({
   providedIn: 'root',
 })
 export class KanjiService {
-  private BASE_URL = 'http://localhost:8080/api/kanji';
   private http = inject(HttpClient);
   kanjis = signal<Kanji[]>([]);
   words = signal<Word[]>([]);
 
   fetchKanjis() {
-    this.http.get<Kanji[]>(this.BASE_URL).subscribe((data) => {
+    this.http.get<Kanji[]>(environment.apiUrl + '/kanji').subscribe((data) => {
       this.kanjis.set(data);
     });
   }
 
   fetchWords(symbol: string) {
     this.http
-      .get<Word[]>(`${this.BASE_URL}/${symbol}/words`)
+      .get<Word[]>(`${environment.apiUrl}/kanji/${symbol}/words`)
       .subscribe((data) => this.words.set(data));
   }
 

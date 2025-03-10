@@ -1,7 +1,8 @@
 import { HttpClient } from '@angular/common/http';
 import { inject, Injectable, signal } from '@angular/core';
 import { Router } from '@angular/router';
-import { map, Observable, switchMap, tap } from 'rxjs';
+import { map, switchMap, tap } from 'rxjs';
+import { environment } from '../../../environments/environment';
 
 export interface Credentials {
   username: string;
@@ -13,13 +14,12 @@ export interface Credentials {
 })
 export class LoginService {
   private http = inject(HttpClient);
-  private BASE_URL = 'http://localhost:8080';
   private router = inject(Router);
 
   username = signal(null);
 
   login(credentials: Credentials) {
-    return this.http.post(this.BASE_URL + '/auth/login', credentials).pipe(
+    return this.http.post(environment.apiUrl + '/auth/login', credentials).pipe(
       tap((result: any) => {
         localStorage.setItem('token', result['token']);
         this.username.set(result['username']);
@@ -31,7 +31,7 @@ export class LoginService {
   }
 
   getUser() {
-    return this.http.get(this.BASE_URL + '/api/users/me').pipe(
+    return this.http.get(environment.apiUrl + '/users/me').pipe(
       tap((result: any) => this.username.set(result['username'])),
       map((_) => this.username()),
     );
@@ -39,7 +39,7 @@ export class LoginService {
 
   register(credentials: Credentials) {
     return this.http
-      .post(this.BASE_URL + '/auth/register', credentials, {
+      .post(environment.apiUrl + '/auth/register', credentials, {
         responseType: 'text',
       })
       .pipe(switchMap((_) => this.login(credentials)));

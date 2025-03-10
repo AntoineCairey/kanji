@@ -5,6 +5,7 @@ import { HttpClient } from '@angular/common/http';
 import { MatButtonModule } from '@angular/material/button';
 import { Card } from '../../models/card.model';
 import { KanjiService } from '../../services/kanji/kanji.service';
+import { environment } from '../../../environments/environment';
 
 @Component({
   selector: 'app-review',
@@ -13,7 +14,6 @@ import { KanjiService } from '../../services/kanji/kanji.service';
   styleUrl: './review.component.css',
 })
 export class ReviewComponent implements OnInit {
-  private BASE_URL = 'http://localhost:8080/api/cards';
   private http = inject(HttpClient);
   private router = inject(Router);
   private cardService = inject(CardService);
@@ -22,7 +22,6 @@ export class ReviewComponent implements OnInit {
   cards = this.cardService.cards;
   currentIndex = signal<number>(0);
   card = computed<Card>(() => this.cards()[this.currentIndex()]);
-
   isAnswer = signal<boolean>(false);
 
   ngOnInit(): void {
@@ -35,7 +34,10 @@ export class ReviewComponent implements OnInit {
 
   reviewCard(cardId: number, isSuccess: boolean) {
     this.http
-      .put(`${this.BASE_URL}/review/${cardId}?success=${isSuccess}`, {})
+      .put(
+        `${environment.apiUrl}/cards/review/${cardId}?success=${isSuccess}`,
+        {},
+      )
       .subscribe((_) => {
         this.isAnswer.set(false);
         if (this.currentIndex() < this.cards().length - 1) {
