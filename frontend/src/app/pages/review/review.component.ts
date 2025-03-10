@@ -4,6 +4,7 @@ import { CardService } from '../../services/card/card.service';
 import { HttpClient } from '@angular/common/http';
 import { MatButtonModule } from '@angular/material/button';
 import { Card } from '../../models/card.model';
+import { KanjiService } from '../../services/kanji/kanji.service';
 
 @Component({
   selector: 'app-review',
@@ -16,6 +17,7 @@ export class ReviewComponent implements OnInit {
   private http = inject(HttpClient);
   private router = inject(Router);
   private cardService = inject(CardService);
+  private kanjiService = inject(KanjiService);
 
   cards = this.cardService.cards;
   currentIndex = signal<number>(0);
@@ -43,4 +45,10 @@ export class ReviewComponent implements OnInit {
         }
       });
   }
+
+  power(a: number, b: number) {
+    return Math.pow(a, b);
+  }
+
+  toRomaji = this.kanjiService.toRomaji;
 }

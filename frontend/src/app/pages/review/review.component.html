@@ -1,15 +1,28 @@
 <div class="container">
   <div class="card">
     <div class="question">
-      {{ !card().isReverse ? card().kanji.symbol : card().kanji.fr }}
+      @if (!card().isReverse) {
+        <p class="symbol">{{ card().kanji.symbol }}</p>
+      } @else {
+        <p class="fr">{{ card().kanji.fr }}</p>
+      }
     </div>
+
     @if (isAnswer()) {
       <div class="answer">
-        <div>
-          {{ !card().isReverse ? card().kanji.fr : card().kanji.symbol }}
-        </div>
-        <div>{{ card().kanji.kun }}</div>
-        <div>{{ card().kanji.onn }}</div>
+        @if (!card().isReverse) {
+          <h3>sens</h3>
+          <p class="fr">{{ card().kanji.fr }}</p>
+        } @else {
+          <p class="symbol">{{ card().kanji.symbol }}</p>
+        }
+        <h3>lecture kun</h3>
+        <p>{{ card().kanji.kun }}</p>
+        <p>{{ toRomaji(card().kanji.kun) }}</p>
+
+        <h3>lecture on</h3>
+        <p>{{ card().kanji.onn }}</p>
+        <p>{{ toRomaji(card().kanji.onn) }}</p>
       </div>
     }
   </div>
@@ -21,10 +34,10 @@
       </button>
     } @else {
       <button mat-flat-button (click)="reviewCard(card().id, false)">
-        Difficile
+        Difficile (1j)
       </button>
       <button mat-flat-button (click)="reviewCard(card().id, true)">
-        Facile
+        Facile ({{ power(2, card().streak + 1) }}j)
       </button>
     }
   </div>

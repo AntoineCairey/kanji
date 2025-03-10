@@ -1,3 +1,38 @@
-button {
-  margin: 10px;
+p {
+  margin: 0;
+}
+
+h3 {
+  margin-bottom: 4px;
+  margin-top: 32px;
+}
+
+.card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.question {
+  margin-top: 20px;
+  margin-bottom: 10px;
+}
+
+.symbol {
+  font-size: 64px;
+}
+
+.buttons {
+  position: fixed;
+  background-color: lightblue;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  display: flex;
+  justify-content: space-evenly;
+
+  button {
+    margin: 10px;
+  }
 }
