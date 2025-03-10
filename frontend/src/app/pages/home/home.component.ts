@@ -12,6 +12,7 @@ import { LoginService } from '../../services/login/login.service';
 export class HomeComponent {
   private router = inject(Router);
   private loginService = inject(LoginService);
+  username = this.loginService.username;
 
   navigate(route: any) {
     this.router.navigate(route);

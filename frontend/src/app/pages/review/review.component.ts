@@ -53,4 +53,8 @@ export class ReviewComponent implements OnInit {
   }
 
   toRomaji = this.kanjiService.toRomaji;
+
+  navigate(url:any) {
+    this.router.navigate(url);
+  }
 }

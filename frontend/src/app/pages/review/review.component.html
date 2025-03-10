@@ -23,6 +23,13 @@
         <h3>lecture on</h3>
         <p>{{ card().kanji.onn }}</p>
         <p>{{ toRomaji(card().kanji.onn) }}</p>
+
+        <button
+          mat-stroked-button
+          (click)="navigate(['kanji', card().kanji.symbol])"
+        >
+          Fiche du kanji
+        </button>
       </div>
     }
   </div>

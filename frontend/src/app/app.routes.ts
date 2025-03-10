@@ -17,17 +17,14 @@ export const routes: Routes = [
   {
     path: 'home',
     component: HomeComponent,
-    canActivate: [isLoggedInGuard],
   },
   {
     path: 'list',
     component: KanjiListComponent,
-    canActivate: [isLoggedInGuard],
   },
   {
     path: 'kanji/:id',
     component: KanjiComponent,
-    canActivate: [isLoggedInGuard],
   },
   {
     path: 'review',
