@@ -1,6 +1,9 @@
 <div class="container">
   <button mat-flat-button (click)="navigate(['list'])">Fiches kanji</button>
-  <button mat-flat-button (click)="navigate(['review'])">
+  <button
+    mat-flat-button
+    (click)="username() ? navigate(['review-info']) : isDialogOpen.set(true)"
+  >
     Révision par flashcards
   </button>
   @if (username()) {
@@ -8,5 +11,13 @@
   } @else {
     <button mat-flat-button (click)="navigate(['login'])">Se connecter</button>
   }
-  <!-- <button mat-flat-button (click)="navigate(['signup'])">S'inscrire</button> -->
 </div>
+
+@if (isDialogOpen()) {
+  <div class="dialog-overlay" (click)="isDialogOpen.set(false)">
+    <div class="dialog" (click)="$event.stopPropagation()">
+      <p>La fonctionnalité de révision par flashcard nécessite un compte utilisateur.</p>
+      <button (click)="isDialogOpen.set(false)">Fermer</button>
+    </div>
+  </div>
+}
