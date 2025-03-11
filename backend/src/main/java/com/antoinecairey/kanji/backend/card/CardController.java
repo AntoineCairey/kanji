@@ -25,7 +25,7 @@ public class CardController {
     String username = jwtUtil.extractUsername(token);
     User user = userService.getUserByUsername(username)
         .orElseThrow(() -> new RuntimeException("Utilisateur non trouvé"));
-    return cardService.getCardsToReview(user.getId());
+    return cardService.getCardsForToday(user.getId());
   }
 
   @GetMapping("/discover")

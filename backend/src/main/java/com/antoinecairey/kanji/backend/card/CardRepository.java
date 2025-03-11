@@ -23,4 +23,8 @@ public interface CardRepository extends JpaRepository<Card, Long> {
 
   // Trouver les cartes manquantes
   boolean existsByUserAndKanjiAndIsReverse(User user, Kanji kanji, boolean isReverse);
+
+  List<Card> findByUserIdAndLastReview(Long userId, LocalDate today);
+  List<Card> findTop10ByUserIdAndLastReviewLessThanOrderByLastReviewAsc(Long userId, LocalDate today);
+  List<Card> findTop10ByUserIdAndLastReviewNullOrderByIsReverseAsc(Long userId);
 }
