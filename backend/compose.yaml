@@ -2,6 +2,8 @@ services:
   db:
     image: mysql:8
     container_name: mysql_db
+    restart: unless-stopped
+    tty: true
     environment:
       MYSQL_ROOT_PASSWORD: ${DB_PASSWORD}
       MYSQL_DATABASE: ${DB_NAME}
@@ -15,14 +17,17 @@ services:
   app:
     build: .
     container_name: spring_boot_app
+    restart: unless-stopped
+    tty: true
     ports:
-      - "8080:8080"
+      - "8081:8080"
     depends_on:
       - db
     environment:
       SPRING_DATASOURCE_URL: jdbc:mysql://${DB_HOST}:3306/${DB_NAME}
       SPRING_DATASOURCE_USERNAME: ${DB_USER}
       SPRING_DATASOURCE_PASSWORD: ${DB_PASSWORD}
+      FRONTEND_URL: ${FRONTEND_URL}
 
 volumes:
   mysql_data:

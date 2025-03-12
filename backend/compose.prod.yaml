@@ -2,6 +2,7 @@ services:
   db:
     image: mysql:8
     container_name: kanji-db
+    restart: unless-stopped
     environment:
       MYSQL_ROOT_PASSWORD: ${DB_PASSWORD}
       MYSQL_DATABASE: ${DB_NAME}
@@ -17,6 +18,7 @@ services:
   app:
     image: antoinecairey/kanji-backend-linux:latest
     container_name: kanji-backend
+    restart: unless-stopped
     ports:
       - "8080:8080"
     depends_on:
@@ -25,6 +27,7 @@ services:
       SPRING_DATASOURCE_URL: jdbc:mysql://${DB_HOST}:3306/${DB_NAME}
       SPRING_DATASOURCE_USERNAME: ${DB_USER}
       SPRING_DATASOURCE_PASSWORD: ${DB_PASSWORD}
+      FRONTEND_URL: ${FRONTEND_URL}
     networks:
       - caddy_proxy
 

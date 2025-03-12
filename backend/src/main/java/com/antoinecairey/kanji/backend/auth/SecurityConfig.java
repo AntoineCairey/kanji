@@ -4,6 +4,7 @@ import lombok.RequiredArgsConstructor;
 
 import java.util.Arrays;
 
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.authentication.AuthenticationManager;
@@ -23,6 +24,9 @@ import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
 public class SecurityConfig {
 
   private final JwtFilter jwtFilter;
+
+  @Value("${frontend.url}")
+  private String frontendUrl;
 
   @Bean
   public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
@@ -52,7 +56,7 @@ public class SecurityConfig {
   @Bean
   UrlBasedCorsConfigurationSource corsConfigurationSource() {
     CorsConfiguration configuration = new CorsConfiguration();
-    configuration.setAllowedOrigins(Arrays.asList("http://localhost:4200"));
+    configuration.setAllowedOrigins(Arrays.asList("http://localhost:4200", frontendUrl));
     configuration.setAllowedMethods(Arrays.asList("GET", "POST", "PUT", "DELETE"));
     configuration.setAllowedHeaders(Arrays.asList("Authorization", "Content-Type"));
     UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
