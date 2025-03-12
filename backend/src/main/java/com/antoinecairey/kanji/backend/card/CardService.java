@@ -13,17 +13,6 @@ import org.springframework.stereotype.Service;
 public class CardService {
   private final CardRepository cardRepository;
 
-  // Récupérer les cartes à réviser pour un utilisateur
-  public List<Card> getCardsToReview(Long userId) {
-    LocalDate today = LocalDate.now();
-    return cardRepository.findByUserIdAndNextReviewLessThanEqual(userId, today);
-  }
-
-  // Récupérer les cartes non révisées pour un utilisateur
-  public List<Card> getCardsToDiscover(Long userId) {
-    return cardRepository.findTop5UnreviewedCardsForUser(userId);
-  }
-
   // Mettre à jour une carte après révision
   public Card updateCardAfterReview(Long cardId, boolean isSuccessful) {
     Card card = cardRepository.findById(cardId)

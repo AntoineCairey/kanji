@@ -28,15 +28,6 @@ public class CardController {
     return cardService.getCardsForToday(user.getId());
   }
 
-  @GetMapping("/discover")
-  public List<Card> getCardsToDiscover(@RequestHeader("Authorization") String authHeader) {
-    String token = authHeader.substring(7);
-    String username = jwtUtil.extractUsername(token);
-    User user = userService.getUserByUsername(username)
-        .orElseThrow(() -> new RuntimeException("Utilisateur non trouvé"));
-    return cardService.getCardsToDiscover(user.getId());
-  }
-
   // Mettre à jour une carte après révision
   @PutMapping("/review/{cardId}")
   public Card updateCardAfterReview(@PathVariable Long cardId, @RequestParam boolean success) {
