@@ -5,6 +5,8 @@ import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.util.Arrays;
+
 import lombok.RequiredArgsConstructor;
 import org.springframework.lang.NonNull;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
@@ -30,7 +32,8 @@ public class JwtFilter extends OncePerRequestFilter {
 
     String requestURI = request.getRequestURI();
 
-    if (requestURI.startsWith("/api/auth/")) {
+    String[] allowedPrefixes = { "/api/auth/", "/api/kanji/" };
+    if (Arrays.stream(allowedPrefixes).anyMatch(requestURI::startsWith)) {
       chain.doFilter(request, response);
       return;
     }
