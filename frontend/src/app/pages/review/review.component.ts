@@ -19,7 +19,7 @@ export class ReviewComponent implements OnInit {
   private cardService = inject(CardService);
   private kanjiService = inject(KanjiService);
 
-  cards = this.cardService.cards;
+  cards = this.cardService.cardsToReview;
   currentIndex = signal<number>(0);
   card = computed<Card>(() => this.cards()[this.currentIndex()]);
   isAnswer = signal<boolean>(false);
@@ -43,7 +43,7 @@ export class ReviewComponent implements OnInit {
         if (this.currentIndex() < this.cards().length - 1) {
           this.currentIndex.update((ci) => ci + 1);
         } else {
-          this.router.navigate(['home']);
+          this.router.navigate(['review-info']);
         }
       });
   }
@@ -54,7 +54,7 @@ export class ReviewComponent implements OnInit {
 
   toRomaji = this.kanjiService.toRomaji;
 
-  navigate(url:any) {
+  navigate(url: any) {
     this.router.navigate(url);
   }
 }

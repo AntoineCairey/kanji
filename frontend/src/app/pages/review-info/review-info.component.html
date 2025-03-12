@@ -1,4 +1,12 @@
 <h3>Etude du jour</h3>
-<div>texte à compléter</div>
+<div>Déjà étudiés : {{ cardService.cardsReviewed().length }}</div>
+<div>A étudier : {{ cardService.cardsToReview().length }}</div>
+<div>dont révisions : {{ cardService.cardsOld().length }}</div>
+<div>dont nouvelles cartes : {{ cardService.cardsNew().length }}</div>
 
-<button (click)="navigate(['review'])">Commencer l'étude</button>
+<button
+  (click)="navigate(['review'])"
+  [disabled]="!cardService.cardsToReview().length"
+>
+  Commencer l'étude
+</button>

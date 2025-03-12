@@ -1,5 +1,5 @@
 import { HttpClient } from '@angular/common/http';
-import { inject, Injectable, signal } from '@angular/core';
+import { computed, inject, Injectable, signal } from '@angular/core';
 import { Card } from '../../models/card.model';
 import { environment } from '../../../environments/environment';
 
@@ -9,19 +9,23 @@ import { environment } from '../../../environments/environment';
 export class CardService {
   private http = inject(HttpClient);
   cards = signal<Card[]>([]);
+  private today = new Date().toISOString().split('T')[0];
+
+  cardsReviewed = computed(() =>
+    this.cards().filter((c) => c.lastReview === this.today),
+  );
+  cardsToReview = computed(() =>
+    this.cards().filter((c) => c.lastReview !== this.today),
+  );
+
+  cardsOld = computed(() =>
+    this.cards().filter((c) => c.lastReview && c.lastReview !== this.today),
+  );
+  cardsNew = computed(() => this.cards().filter((c) => !c.lastReview));
 
   fetchCards() {
     this.http
       .get<Card[]>(environment.apiUrl + '/cards/review')
-      .subscribe((toReview) => {
-        this.cards.set(toReview);
-        this.http
-          .get<Card[]>(environment.apiUrl + '/cards/discover')
-          .subscribe((toDiscover) => {
-            this.cards.update((c) => c.concat(toDiscover));
-          });
-      });
+      .subscribe((c) => this.cards.set(c));
   }
-
-  
 }

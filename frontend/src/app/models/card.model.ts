@@ -7,6 +7,6 @@ export class Card {
   kanji: Kanji = new Kanji();
   isReverse: boolean = false;
   streak: number = 0;
-  lastReview: Date | null = null;
-  nextReview: Date | null = null;
+  lastReview: string | null = null;
+  nextReview: string | null = null;
 }
