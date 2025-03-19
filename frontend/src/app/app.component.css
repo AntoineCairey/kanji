@@ -20,8 +20,9 @@ header {
 /* Appliquer une largeur pleine sur mobile */
 main {
   width: 100%;
-  padding: 16px;
-  padding-top: 80px;
+  padding: 32px;
+  padding-top: 0;
+  /* padding-top: 80px; */
 }
 
 /* Ajouter des marges latérales sur les écrans plus larges */

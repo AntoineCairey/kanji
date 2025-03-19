@@ -1,0 +1,34 @@
+<header class="navbar">
+  <a class="logo" routerLink="home">
+    <img src="kanji-fire-red.svg" alt="Kanji Master logo" />
+    <div>Kanji Master</div>
+  </a>
+  <div>
+    <nav class="nav-desktop">
+      <a routerLink="list">Liste des kanjis</a>
+      <a routerLink="review-info">Etude par flashcards</a>
+      <a routerLink="login">Me connecter</a>
+    </nav>
+    <button
+      class="nav-mobile icon material-symbols-outlined"
+      (click)="isModalOpen.set(true)"
+    >
+      menu
+    </button>
+    @if (isModalOpen()) {
+    <div class="overlay" (click)="isModalOpen.set(false)">
+      <nav class="sidebar" (click)="$event.stopPropagation()">
+        <button
+          (click)="isModalOpen.set(false)"
+          class="icon material-symbols-outlined"
+        >
+          close
+        </button>
+        <a routerLink="list">Liste des kanjis</a>
+        <a routerLink="review-info">Etude par flashcards</a>
+        <a routerLink="login">Me connecter</a>
+      </nav>
+    </div>
+    }
+  </div>
+</header>

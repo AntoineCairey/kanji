@@ -1,23 +1,20 @@
-<div class="container">
-  <button mat-flat-button (click)="navigate(['list'])">Fiches kanji</button>
-  <button
-    mat-flat-button
-    (click)="username() ? navigate(['review-info']) : isDialogOpen.set(true)"
-  >
-    Révision par flashcards
-  </button>
-  @if (username()) {
-    <button mat-flat-button (click)="logout()">Se déconnecter</button>
-  } @else {
-    <button mat-flat-button (click)="navigate(['login'])">Se connecter</button>
-  }
+<div class="hero">
+  <img src="fuji.svg" alt="mont-fuji" />
+  <div>Un outil indispensable pour apprendre les caractères japonais</div>
 </div>
-
-@if (isDialogOpen()) {
-  <div class="dialog-overlay" (click)="isDialogOpen.set(false)">
-    <div class="dialog" (click)="$event.stopPropagation()">
-      <p>La fonctionnalité de révision par flashcard nécessite un compte utilisateur.</p>
-      <button (click)="isDialogOpen.set(false)">Fermer</button>
-    </div>
+<div class="features">
+  <div class="feature">
+    <img src="calligraphy.png" alt="calligraphie" />
+    <div>Des fiches détaillées sur les 100 kanjis les plus courants</div>
+    <a routerLink="list">Liste des kanjis</a>
   </div>
-}
+  <div class="feature">
+    <img src="book.png" alt="livre" />
+    <div>
+      Un système d’étude par flashcard pour optimiser votre apprentissage. Selon
+      vos sessions précédentes, les kanjis vous sont proposés au moment idéal
+      pour les retenir.
+    </div>
+    <a routerLink="review">Etude par flashcards</a>
+  </div>
+</div>
