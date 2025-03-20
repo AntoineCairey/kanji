@@ -1,8 +1,11 @@
-<mat-card appearance="outlined" class="tile">
+<!-- <mat-card appearance="outlined" class="tile">
   <mat-card-content>
     <h1>{{ kanji()?.symbol }}</h1>
     <div>{{ kanji()?.fr.split(",")[0] }}</div>
-    <!-- <div>kun : {{ kanji()?.kun }} ({{ toRomaji(kanji()?.kun) }})</div>
-    <div>on : {{ kanji()?.onn }} ({{ toRomaji(kanji()?.onn) }})</div> -->
   </mat-card-content>
-</mat-card>
+</mat-card> -->
+
+<button class="tile">
+  <h1>{{ kanji()?.symbol }}</h1>
+  <div>{{ kanji()?.fr.split(",")[0] }}</div>
+</button>

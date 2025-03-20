@@ -9,6 +9,7 @@ import { ReviewComponent } from './pages/review/review.component';
 import { HomeComponent } from './pages/home/home.component';
 import { ReviewDashboardComponent } from './pages/review-dashboard/review-dashboard.component';
 import { ReviewInfoComponent } from './pages/review-info/review-info.component';
+import { ProfileComponent } from './pages/profile/profile.component';
 
 export const routes: Routes = [
   {
@@ -40,6 +41,11 @@ export const routes: Routes = [
   {
     path: 'review',
     component: ReviewComponent,
+    canActivate: [isLoggedInGuard],
+  },
+  {
+    path: 'profile',
+    component: ProfileComponent,
     canActivate: [isLoggedInGuard],
   },
   { path: 'login', component: LoginComponent },

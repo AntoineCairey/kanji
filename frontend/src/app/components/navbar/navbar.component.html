@@ -7,7 +7,14 @@
     <nav class="nav-desktop">
       <a routerLink="/list">Liste des kanjis</a>
       <a routerLink="/review-dashboard">Etude par flashcards</a>
+      @if (!username()) {
       <a routerLink="/login">Me connecter</a>
+      } @else {
+      <a routerLink="/profile" class="username">
+        <span class="icon material-symbols-outlined"> account_circle </span>
+        {{ username() }}
+      </a>
+      }
     </nav>
     <button
       class="nav-mobile icon material-symbols-outlined"
@@ -30,7 +37,18 @@
         <a (click)="isModalOpen.set(false)" routerLink="/review-dashboard"
           >Etude par flashcards</a
         >
+        @if (!username()) {
         <a (click)="isModalOpen.set(false)" routerLink="/login">Me connecter</a>
+        } @else {
+        <a
+          (click)="isModalOpen.set(false)"
+          routerLink="/profile"
+          class="username"
+        >
+          <span class="icon material-symbols-outlined"> account_circle </span>
+          {{ username() }}
+        </a>
+        }
       </nav>
     </div>
     }

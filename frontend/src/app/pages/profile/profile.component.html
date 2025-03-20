@@ -1,0 +1,14 @@
+<a routerLink="/home" class="link back">Retour</a>
+<div class="callout">
+  <h2 class="username">
+    <span class="icon material-symbols-outlined"> account_circle </span>
+    {{ username() }}
+  </h2>
+  <p>Compte créé le ...</p>
+  <div>... kanjis maîtrisés</div>
+  <div>... en cours d'apprentissage</div>
+  <div>... non vus</div>
+</div>
+<button class="box-btn stroked-primary" (click)="logout()">
+  Me déconnecter
+</button>

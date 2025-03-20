@@ -1,11 +1,10 @@
 import { Component, inject, signal } from '@angular/core';
-import { MatButtonModule } from '@angular/material/button';
 import { Router, RouterLink } from '@angular/router';
 import { LoginService } from '../../services/login/login.service';
 
 @Component({
   selector: 'app-home',
-  imports: [RouterLink, MatButtonModule],
+  imports: [RouterLink],
   templateUrl: './home.component.html',
   styleUrl: './home.component.css',
 })

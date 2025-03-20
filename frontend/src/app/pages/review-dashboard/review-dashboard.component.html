@@ -1,12 +1,24 @@
-<h3>Etude du jour</h3>
-<div>Déjà étudiés : {{ cardService.cardsReviewed().length }}</div>
-<div>A étudier : {{ cardService.cardsToReview().length }}</div>
-<div>dont révisions : {{ cardService.cardsOld().length }}</div>
-<div>dont nouvelles cartes : {{ cardService.cardsNew().length }}</div>
+<a routerLink="/home" class="link back">Retour</a>
+
+<h2 class="username">
+  <span class="icon material-symbols-outlined"> account_circle </span>
+  {{ username() }}
+</h2>
+
+<div class="callout">
+  <h3>Etude du jour</h3>
+  <div>Déjà étudié : {{ cardService.cardsReviewed().length }}</div>
+  <br>
+  <div>Reste à étudier : {{ cardService.cardsToReview().length }}</div>
+  <div>- {{ cardService.cardsOld().length }} révisions</div>
+  <div>- {{ cardService.cardsNew().length }} nouveaux kanjis</div>
+</div>
 
 <button
   (click)="navigate(['review'])"
   [disabled]="!cardService.cardsToReview().length"
+  class="box-btn flat-primary"
 >
   Commencer l'étude
+  <span class="arrow material-symbols-outlined"> arrow_forward </span>
 </button>

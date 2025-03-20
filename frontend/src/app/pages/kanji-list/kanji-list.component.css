@@ -1,10 +1,4 @@
 .container {
-  /* display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 10px; */
-
   display: grid;
   gap: 10px; /* Espace entre les tuiles */
   grid-template-columns: repeat(auto-fit, minmax(105px, 1fr));

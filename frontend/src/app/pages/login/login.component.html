@@ -1,4 +1,5 @@
 <div class="container">
+  <a routerLink="/home" class="link back">Retour</a>
   <h2>Connexion</h2>
   <form [formGroup]="loginFormGroup" (submit)="login()">
     <div class="form-field">
@@ -14,7 +15,7 @@
     <button
       [disabled]="loginFormGroup.invalid"
       type="submit"
-      class="stroked-primary"
+      class="box-btn stroked-primary"
     >
       Se connecter
     </button>

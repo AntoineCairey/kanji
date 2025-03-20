@@ -1,10 +1,9 @@
 import { Component, inject, input } from '@angular/core';
-import { MatCardModule } from '@angular/material/card';
 import { KanjiService } from '../../services/kanji/kanji.service';
 
 @Component({
   selector: 'app-tile',
-  imports: [MatCardModule],
+  imports: [],
   templateUrl: './tile.component.html',
   styleUrl: './tile.component.css',
 })

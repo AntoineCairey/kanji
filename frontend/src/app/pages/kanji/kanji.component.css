@@ -28,7 +28,7 @@ h3 {
 
 .buttons {
   position: fixed;
-  background-color: lightblue;
+  background-color: white;
   bottom: 0;
   left: 0;
   width: 100%;
@@ -36,6 +36,9 @@ h3 {
   justify-content: space-evenly;
 
   button {
-    margin: 10px;
+    margin: 16px;
+    width: 140px;
+    display: flex;
+    justify-content: center;
   }
 }

@@ -1,5 +1,6 @@
 import { Component, inject, signal } from '@angular/core';
 import { Router, RouterLink } from '@angular/router';
+import { LoginService } from '../../services/login/login.service';
 
 @Component({
   selector: 'app-navbar',
@@ -9,7 +10,9 @@ import { Router, RouterLink } from '@angular/router';
 })
 export class NavbarComponent {
   private router = inject(Router);
+  private loginService = inject(LoginService);
   isModalOpen = signal(false);
+  username = this.loginService.username;
 
   navigate(route: any) {
     this.router.navigate(route);

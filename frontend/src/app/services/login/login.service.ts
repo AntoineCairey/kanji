@@ -48,6 +48,6 @@ export class LoginService {
   logout() {
     localStorage.removeItem('token');
     this.username.set(null);
-    this.router.navigate(['login']);
+    this.router.navigate(['/home']);
   }
 }

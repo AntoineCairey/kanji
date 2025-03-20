@@ -33,7 +33,7 @@ export class LoginComponent implements OnDestroy {
     this.loginSubscription = this.loginService
       .login(this.loginFormGroup.value as Credentials)
       .subscribe({
-        next: (result) => this.navigate(['']),
+        next: (result) => this.navigate(['review-dashboard']),
         error: (error) => (this.invalidCredentials = true),
       });
   }

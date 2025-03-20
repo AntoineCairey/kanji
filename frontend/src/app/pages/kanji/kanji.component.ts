@@ -6,13 +6,12 @@ import {
   OnInit,
   signal,
 } from '@angular/core';
-import { ActivatedRoute, Router } from '@angular/router';
+import { ActivatedRoute, Router, RouterLink } from '@angular/router';
 import { KanjiService } from '../../services/kanji/kanji.service';
-import { MatButtonModule } from '@angular/material/button';
 
 @Component({
   selector: 'app-kanji',
-  imports: [MatButtonModule],
+  imports: [RouterLink],
   templateUrl: './kanji.component.html',
   styleUrl: './kanji.component.css',
 })

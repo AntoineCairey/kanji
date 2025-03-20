@@ -1,5 +1,9 @@
+<a routerLink="/home" class="link back">Retour</a>
+<h2>Liste de kanjis</h2>
+<p>Liste des 103 kanjis du niveau JLPT N5 (débutant)</p>
+
 <div class="container">
   @for (kanji of kanjis(); track kanji.id) {
-    <app-tile [kanji]="kanji" (click)="openKanji(kanji.symbol)" />
+  <app-tile [kanji]="kanji" (click)="openKanji(kanji.symbol)" />
   }
 </div>

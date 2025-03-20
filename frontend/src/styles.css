@@ -56,27 +56,51 @@ h6 {
 
 body {
   --primary: #dd2929;
-  --primary-light : #EB6969;
+  --primary-light: #eb6969;
   --primary-faded: #fff4f4;
   --grey: #f2f2f2;
   --grey-light: #fafafa;
 }
 
+.box-btn {
+  border: 1px solid black;
+  border-radius: 8px;
+  padding: 12px;
+  font-weight: 600;
+  margin-block: 32px;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
 .stroked-primary {
   color: var(--primary);
-  border: 1px solid var(--primary);
-  border-radius: 8px;
-  padding: 8px;
-  font-weight: 600;
+  border-color: var(--primary);
 
   &:not(:disabled):hover {
     background: var(--grey-light);
   }
 }
 
+.flat-primary {
+  color: white;
+  background: var(--primary-light);
+  border: none;
+
+  &:not(:disabled):hover {
+    filter: brightness(1.05);
+  }
+}
+
+.arrow {
+  font-size: 20px;
+}
+
 .link {
   font-weight: 600;
   text-decoration: underline;
+  margin-bottom: 20px;
+  display: block;
 }
 
 .forward::after {
@@ -85,4 +109,24 @@ body {
 
 .back::before {
   content: "← ";
+}
+
+.callout {
+  background-color: var(--primary-faded);
+  border-radius: 8px;
+  padding: 24px;
+
+  & > *:first-child {
+    margin-top: 0;
+  }
+}
+
+.icon {
+  font-size: 32px;
+}
+
+.username {
+  display: flex;
+  align-items: center;
+  gap: 8px;
 }

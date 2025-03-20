@@ -1,11 +1,11 @@
-import { Component, effect, inject, OnInit, signal } from '@angular/core';
+import { Component, effect, inject, OnInit } from '@angular/core';
 import { TileComponent } from '../../components/tile/tile.component';
-import { Router } from '@angular/router';
+import { Router, RouterLink } from '@angular/router';
 import { KanjiService } from '../../services/kanji/kanji.service';
 
 @Component({
   selector: 'app-kanji-list',
-  imports: [TileComponent],
+  imports: [TileComponent, RouterLink],
   templateUrl: './kanji-list.component.html',
   styleUrl: './kanji-list.component.css',
 })

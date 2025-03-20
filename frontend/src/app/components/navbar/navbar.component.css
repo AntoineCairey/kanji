@@ -63,10 +63,6 @@
   z-index: 999999999999;
 }
 
-.icon {
-  font-size: 32px;
-}
-
 @media (width < 768px) {
   .nav-desktop {
     display: none;
