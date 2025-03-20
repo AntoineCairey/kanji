@@ -7,6 +7,7 @@ import { NotFoundComponent } from './pages/not-found/not-found.component';
 import { SignupComponent } from './pages/signup/signup.component';
 import { ReviewComponent } from './pages/review/review.component';
 import { HomeComponent } from './pages/home/home.component';
+import { ReviewDashboardComponent } from './pages/review-dashboard/review-dashboard.component';
 import { ReviewInfoComponent } from './pages/review-info/review-info.component';
 
 export const routes: Routes = [
@@ -30,6 +31,10 @@ export const routes: Routes = [
   {
     path: 'review-info',
     component: ReviewInfoComponent,
+  },
+  {
+    path: 'review-dashboard',
+    component: ReviewDashboardComponent,
     canActivate: [isLoggedInGuard],
   },
   {

@@ -1,3 +1,5 @@
+/* Styles par défaut */
+
 * {
   box-sizing: border-box;
   font-family: "Inter", sans-serif;
@@ -19,6 +21,11 @@ button {
   padding: 0;
   margin: 0;
   font-size: 1rem;
+
+  &:disabled {
+    color: lightgrey;
+    border-color: lightgrey;
+  }
 }
 
 a,
@@ -26,4 +33,56 @@ button {
   cursor: pointer;
   color: black;
   text-decoration: none;
+}
+
+input {
+  padding: 12px;
+  width: 200px;
+  border-radius: 4px;
+  border: 1px solid black;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: Lexend, sans-serif;
+  font-weight: normal;
+}
+
+/* Composants réutilisables */
+
+body {
+  --primary: #dd2929;
+  --primary-light : #EB6969;
+  --primary-faded: #fff4f4;
+  --grey: #f2f2f2;
+  --grey-light: #fafafa;
+}
+
+.stroked-primary {
+  color: var(--primary);
+  border: 1px solid var(--primary);
+  border-radius: 8px;
+  padding: 8px;
+  font-weight: 600;
+
+  &:not(:disabled):hover {
+    background: var(--grey-light);
+  }
+}
+
+.link {
+  font-weight: 600;
+  text-decoration: underline;
+}
+
+.forward::after {
+  content: " →";
+}
+
+.back::before {
+  content: "← ";
 }

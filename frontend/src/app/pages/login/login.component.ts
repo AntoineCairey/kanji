@@ -5,23 +5,13 @@ import {
   ReactiveFormsModule,
   Validators,
 } from '@angular/forms';
-import { Router } from '@angular/router';
-import { HttpClient } from '@angular/common/http';
-import { MatFormFieldModule } from '@angular/material/form-field';
-import { MatInputModule } from '@angular/material/input';
-import { MatButtonModule } from '@angular/material/button';
+import { Router, RouterLink } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { Credentials, LoginService } from '../../services/login/login.service';
 
 @Component({
   selector: 'app-login',
-  imports: [
-    ReactiveFormsModule,
-    FormsModule,
-    MatFormFieldModule,
-    MatInputModule,
-    MatButtonModule,
-  ],
+  imports: [ReactiveFormsModule, FormsModule, RouterLink],
   templateUrl: './login.component.html',
   styleUrl: './login.component.css',
 })
@@ -29,7 +19,6 @@ export class LoginComponent implements OnDestroy {
   private formBuilder = inject(FormBuilder);
   private router = inject(Router);
   private loginService = inject(LoginService);
-  private http = inject(HttpClient);
 
   private loginSubscription: Subscription | null = null;
 

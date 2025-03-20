@@ -43,7 +43,7 @@ export class ReviewComponent implements OnInit {
         if (this.currentIndex() < this.cards().length - 1) {
           this.currentIndex.update((ci) => ci + 1);
         } else {
-          this.router.navigate(['review-info']);
+          this.router.navigate(['review-dashboard']);
         }
       });
   }

@@ -1,25 +1,30 @@
 <div class="container">
   <h2>Connexion</h2>
   <form [formGroup]="loginFormGroup" (submit)="login()">
-    <mat-form-field hideRequiredMarker>
-      <mat-label>Username</mat-label>
-      <input matInput type="text" formControlName="username" />
-    </mat-form-field>
+    <div class="form-field">
+      <label>Pseudo</label>
+      <input type="text" name="username" formControlName="username" />
+    </div>
 
-    <mat-form-field hideRequiredMarker>
-      <mat-label>Password</mat-label>
-      <input matInput type="password" formControlName="password" />
-    </mat-form-field>
+    <div class="form-field">
+      <label>Mot de passe</label>
+      <input type="password" name="password" formControlName="password" />
+    </div>
 
-    <button mat-flat-button [disabled]="loginFormGroup.invalid">
+    <button
+      [disabled]="loginFormGroup.invalid"
+      type="submit"
+      class="stroked-primary"
+    >
       Se connecter
     </button>
     @if (invalidCredentials) {
-      <mat-error>Invalid credentials</mat-error>
+    <div class="form-error">Identifiants incorrects</div>
     }
   </form>
 
-  <button mat-stroked-button (click)="navigate(['signup'])">
-    Je n'ai pas de compte
-  </button>
+  <div class="no-account">
+    <div>Je n'ai pas de compte utilisateur</div>
+    <a routerLink="/signup" class="link forward">Créer un compte</a>
+  </div>
 </div>

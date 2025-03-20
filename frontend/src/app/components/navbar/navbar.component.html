@@ -5,9 +5,9 @@
   </a>
   <div>
     <nav class="nav-desktop">
-      <a routerLink="list">Liste des kanjis</a>
-      <a routerLink="review-info">Etude par flashcards</a>
-      <a routerLink="login">Me connecter</a>
+      <a routerLink="/list">Liste des kanjis</a>
+      <a routerLink="/review-dashboard">Etude par flashcards</a>
+      <a routerLink="/login">Me connecter</a>
     </nav>
     <button
       class="nav-mobile icon material-symbols-outlined"
@@ -24,9 +24,13 @@
         >
           close
         </button>
-        <a routerLink="list">Liste des kanjis</a>
-        <a routerLink="review-info">Etude par flashcards</a>
-        <a routerLink="login">Me connecter</a>
+        <a (click)="isModalOpen.set(false)" routerLink="/list"
+          >Liste des kanjis</a
+        >
+        <a (click)="isModalOpen.set(false)" routerLink="/review-dashboard"
+          >Etude par flashcards</a
+        >
+        <a (click)="isModalOpen.set(false)" routerLink="/login">Me connecter</a>
       </nav>
     </div>
     }

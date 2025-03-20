@@ -10,9 +10,9 @@ export const isLoggedInGuard: CanActivateFn = (route, state) => {
   if (!loginService.username()) {
     return loginService.getUser().pipe(
       map((_) => true),
-      catchError((_) => router.navigate(['login'])),
+      catchError((_) => router.navigate(['review-info']))
     );
   }
 
-  return true; 
+  return true;
 };
