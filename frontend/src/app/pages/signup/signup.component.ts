@@ -44,4 +44,9 @@ export class SignupComponent {
   navigate(route: any) {
     this.router.navigate(route);
   }
+
+  isFieldValid(name: string) {
+    const formControl = this.signupForm.get(name);
+    return formControl?.invalid && (formControl?.dirty || formControl?.touched);
+  }
 }

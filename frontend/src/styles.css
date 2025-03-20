@@ -1,3 +1,13 @@
+/* Variables CSS */
+
+body {
+  --primary: #dd2929;
+  --primary-light: #eb6969;
+  --primary-faded: #fff4f4;
+  --grey: #c9c9c9;
+  --grey-light: #fafafa;
+}
+
 /* Styles par défaut */
 
 * {
@@ -23,8 +33,9 @@ button {
   font-size: 1rem;
 
   &:disabled {
-    color: lightgrey;
-    border-color: lightgrey;
+    color: var(--grey);
+    border-color: var(--grey);
+    background-color: var(--grey-light);
   }
 }
 
@@ -53,14 +64,6 @@ h6 {
 }
 
 /* Composants réutilisables */
-
-body {
-  --primary: #dd2929;
-  --primary-light: #eb6969;
-  --primary-faded: #fff4f4;
-  --grey: #f2f2f2;
-  --grey-light: #fafafa;
-}
 
 .box-btn {
   border: 1px solid black;

@@ -9,7 +9,12 @@ import { Router, RouterLink } from '@angular/router';
   styleUrl: './profile.component.css',
 })
 export class ProfileComponent {
+  private router = inject(Router);
   private loginService = inject(LoginService);
   username = this.loginService.username;
-  logout = this.loginService.logout;
+
+  logout() {
+    this.loginService.logout();
+    this.router.navigate(['/home']);
+  }
 }

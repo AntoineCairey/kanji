@@ -24,6 +24,8 @@ form {
 
 .form-error {
   color: var(--primary);
+  font-size: 14px;
+  font-style: italic;
 }
 
 .no-account div {

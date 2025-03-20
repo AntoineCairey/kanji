@@ -8,7 +8,7 @@
       <a routerLink="/list">Liste des kanjis</a>
       <a routerLink="/review-dashboard">Etude par flashcards</a>
       @if (!username()) {
-      <a routerLink="/login">Me connecter</a>
+      <a routerLink="/login">Connexion</a>
       } @else {
       <a routerLink="/profile" class="username">
         <span class="icon material-symbols-outlined"> account_circle </span>
@@ -38,7 +38,7 @@
           >Etude par flashcards</a
         >
         @if (!username()) {
-        <a (click)="isModalOpen.set(false)" routerLink="/login">Me connecter</a>
+        <a (click)="isModalOpen.set(false)" routerLink="/login">Connexion</a>
         } @else {
         <a
           (click)="isModalOpen.set(false)"

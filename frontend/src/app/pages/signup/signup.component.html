@@ -1,34 +1,68 @@
 <div class="container">
   <h2>Inscription</h2>
   <form [formGroup]="signupForm" (submit)="signup()">
-    <mat-form-field hideRequiredMarker>
+    <div class="form-field">
+      <label for="username">Pseudo</label>
+      <input type="text" id="username" formControlName="username" />
+      @if (isFieldValid("username")) {
+        @if (signupForm.get("username")?.hasError("required")) {
+          <div class="form-error">Champ obligatoire</div>
+        }
+        @if (signupForm.get("username")?.hasError("minlength")) {
+          <div class="form-error">Au moins 3 caractères</div>
+        }
+      }
+    </div>
+
+    <div class="form-field">
+      <label for="password">Mot de passe</label>
+      <input type="password" id="password" formControlName="password" />
+      @if (isFieldValid("password")) {
+        @if (signupForm.get("password")?.hasError("required")) {
+          <div class="form-error">Champ obligatoire</div>
+        }
+        @if (signupForm.get("password")?.hasError("minlength")) {
+          <div class="form-error">Au moins 3 caractères</div>
+        }
+      }
+    </div>
+
+    <!-- <mat-form-field hideRequiredMarker>
       <mat-label for="username">Username</mat-label>
       <input matInput type="text" id="username" formControlName="username" />
       @if (signupForm.get("username")?.hasError("required")) {
-        <mat-error>Username required</mat-error>
-      }
-      @if (signupForm.get("username")?.hasError("minlength")) {
-        <mat-error>Must be at least 3 characters</mat-error>
+      <mat-error>Username required</mat-error>
+      } @if (signupForm.get("username")?.hasError("minlength")) {
+      <mat-error>Must be at least 3 characters</mat-error>
       }
     </mat-form-field>
 
     <mat-form-field hideRequiredMarker>
       <mat-label for="password">Password</mat-label>
-      <input matInput type="password" id="password" formControlName="password" />
+      <input
+        matInput
+        type="password"
+        id="password"
+        formControlName="password"
+      />
       @if (signupForm.get("password")?.hasError("required")) {
-        <mat-error>Password required</mat-error>
+      <mat-error>Password required</mat-error>
+      } @if (signupForm.get("password")?.hasError("minlength")) {
+      <mat-error>Must be at least 3 characters</mat-error>
       }
-      @if (signupForm.get("password")?.hasError("minlength")) {
-        <mat-error>Must be at least 3 characters</mat-error>
-      }
-    </mat-form-field>
+    </mat-form-field> -->
 
-    <button mat-flat-button type="submit" [disabled]="signupForm.invalid">
+    <button
+      class="box-btn stroked-primary"
+      type="submit"
+      [disabled]="signupForm.invalid"
+    >
       S'inscrire
     </button>
   </form>
 
-  <button mat-stroked-button (click)="navigate(['login'])">
-    J'ai déjà un compte
-  </button>
+  <div class="no-account">
+    <div>J'ai déjà un compte utilisateur</div>
+    <a routerLink="/signup" class="link forward">Me connecter</a>
+  </div>
 </div>

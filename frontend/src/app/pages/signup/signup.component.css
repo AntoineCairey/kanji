@@ -1,12 +1,33 @@
-form {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  margin-bottom: 20px;
-}
-
 .container {
   display: flex;
   flex-direction: column;
-  align-items: center;
+  align-items: flex-start;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  margin-bottom: 40px;
+  gap: 20px;
+
+  .stroked-primary {
+    margin-top: 10px;
+  }
+}
+
+.form-field {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.form-error {
+  color: var(--primary);
+  font-size: 14px;
+  font-style: italic;
+}
+
+.no-account div {
+  margin-bottom: 10px;
 }
