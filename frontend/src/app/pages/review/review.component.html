@@ -1,51 +1,58 @@
-<a routerLink="/review-dashboard" class="link back">Quitter</a>
+<div class="narrow">
+  <a routerLink="/review-dashboard" class="link back">Quitter</a>
 
-<div class="card">
-  <div class="question">
-    @if (!card().isReverse) {
-    <p class="symbol">{{ card().kanji.symbol }}</p>
-    } @else {
-    <p class="fr">{{ card().kanji.fr }}</p>
+  <div class="card">
+    <div class="question">
+      @if (!card().isReverse) {
+        <p class="symbol">{{ card().kanji.symbol }}</p>
+      } @else {
+        <p class="fr">{{ card().kanji.fr }}</p>
+      }
+    </div>
+
+    @if (isAnswer()) {
+      <div class="answer">
+        @if (!card().isReverse) {
+          <h3>sens</h3>
+          <p class="fr">{{ card().kanji.fr }}</p>
+        } @else {
+          <p class="symbol">{{ card().kanji.symbol }}</p>
+        }
+        <h3>lecture kun</h3>
+        <p>{{ card().kanji.kun }}</p>
+        <p>{{ toRomaji(card().kanji.kun) }}</p>
+
+        <h3>lecture on</h3>
+        <p>{{ card().kanji.onn }}</p>
+        <p>{{ toRomaji(card().kanji.onn) }}</p>
+
+        <!-- <a [routerLink]="['/kanji',card().kanji.symbol]" class="link forward"
+        >Fiche du kanji</a
+        > -->
+      </div>
     }
   </div>
 
-  @if (isAnswer()) {
-  <div class="answer">
-    @if (!card().isReverse) {
-    <h3>sens</h3>
-    <p class="fr">{{ card().kanji.fr }}</p>
-    } @else {
-    <p class="symbol">{{ card().kanji.symbol }}</p>
-    }
-    <h3>lecture kun</h3>
-    <p>{{ card().kanji.kun }}</p>
-    <p>{{ toRomaji(card().kanji.kun) }}</p>
-
-    <h3>lecture on</h3>
-    <p>{{ card().kanji.onn }}</p>
-    <p>{{ toRomaji(card().kanji.onn) }}</p>
-
-    <!-- <a [routerLink]="['/kanji',card().kanji.symbol]" class="link forward"
-      >Fiche du kanji</a
-    > -->
+  <div class="container">
+    <div class="buttons">
+      @if (!isAnswer()) {
+        <button class="box-btn stroked-primary forward" (click)="showAnswer()">
+          Afficher la réponse
+        </button>
+      } @else {
+        <button
+          class="box-btn stroked-primary"
+          (click)="reviewCard(card().id, false)"
+        >
+          Difficile (1j)
+        </button>
+        <button
+          class="box-btn stroked-primary"
+          (click)="reviewCard(card().id, true)"
+        >
+          Facile ({{ power(2, card().streak + 1) }}j)
+        </button>
+      }
+    </div>
   </div>
-  }
-</div>
-
-<div class="buttons">
-  @if (!isAnswer()) {
-  <button class="box-btn stroked-primary forward" (click)="showAnswer()">
-    Afficher la réponse
-  </button>
-  } @else {
-  <button
-    class="box-btn stroked-primary"
-    (click)="reviewCard(card().id, false)"
-  >
-    Difficile (1j)
-  </button>
-  <button class="box-btn stroked-primary" (click)="reviewCard(card().id, true)">
-    Facile ({{ power(2, card().streak + 1) }}j)
-  </button>
-  }
 </div>

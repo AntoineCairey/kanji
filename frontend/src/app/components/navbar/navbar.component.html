@@ -1,56 +1,62 @@
-<header class="navbar">
-  <a class="logo" routerLink="home">
-    <img src="kanji-fire-red.svg" alt="Kanji Master logo" />
-    <div>Kanji Master</div>
-  </a>
-  <div>
-    <nav class="nav-desktop">
-      <a routerLink="/list">Liste des kanjis</a>
-      <a routerLink="/review-dashboard">Etude par flashcards</a>
-      @if (!username()) {
-      <a routerLink="/login">Connexion</a>
-      } @else {
-      <a routerLink="/profile" class="username">
-        <span class="icon material-symbols-outlined"> account_circle </span>
-        {{ username() }}
-      </a>
-      }
-    </nav>
-    <button
-      class="nav-mobile icon material-symbols-outlined"
-      (click)="isModalOpen.set(true)"
-    >
-      menu
-    </button>
-    @if (isModalOpen()) {
-    <div class="overlay" (click)="isModalOpen.set(false)">
-      <nav class="sidebar" (click)="$event.stopPropagation()">
-        <button
-          (click)="isModalOpen.set(false)"
-          class="icon material-symbols-outlined"
-        >
-          close
-        </button>
-        <a (click)="isModalOpen.set(false)" routerLink="/list"
-          >Liste des kanjis</a
-        >
-        <a (click)="isModalOpen.set(false)" routerLink="/review-dashboard"
-          >Etude par flashcards</a
-        >
+<div class="container">
+  <header class="navbar">
+    <a class="logo" routerLink="home">
+      <img src="kanji-fire-red.svg" alt="Kanji Master logo" />
+      <div>Kanji Master</div>
+    </a>
+    <div>
+      <nav class="nav-desktop">
+        <a routerLink="/list">Liste des kanjis</a>
+        <a routerLink="/review-dashboard">Etude par flashcards</a>
         @if (!username()) {
-        <a (click)="isModalOpen.set(false)" routerLink="/login">Connexion</a>
+          <a routerLink="/login">Connexion</a>
         } @else {
-        <a
-          (click)="isModalOpen.set(false)"
-          routerLink="/profile"
-          class="username"
-        >
-          <span class="icon material-symbols-outlined"> account_circle </span>
-          {{ username() }}
-        </a>
+          <a routerLink="/profile" class="username">
+            <span class="icon material-symbols-outlined"> account_circle </span>
+            {{ username() }}
+          </a>
         }
       </nav>
+      <button
+        class="nav-mobile icon material-symbols-outlined"
+        (click)="isModalOpen.set(true)"
+      >
+        menu
+      </button>
+      @if (isModalOpen()) {
+        <div class="overlay" (click)="isModalOpen.set(false)">
+          <nav class="sidebar" (click)="$event.stopPropagation()">
+            <button
+              (click)="isModalOpen.set(false)"
+              class="icon material-symbols-outlined"
+            >
+              close
+            </button>
+            <a (click)="isModalOpen.set(false)" routerLink="/list"
+              >Liste des kanjis</a
+            >
+            <a (click)="isModalOpen.set(false)" routerLink="/review-dashboard"
+              >Etude par flashcards</a
+            >
+            @if (!username()) {
+              <a (click)="isModalOpen.set(false)" routerLink="/login"
+                >Connexion</a
+              >
+            } @else {
+              <a
+                (click)="isModalOpen.set(false)"
+                routerLink="/profile"
+                class="username"
+              >
+                <span class="icon material-symbols-outlined">
+                  account_circle
+                </span>
+                {{ username() }}
+              </a>
+            }
+          </nav>
+        </div>
+      }
     </div>
-    }
-  </div>
-</header>
+  </header>
+</div>

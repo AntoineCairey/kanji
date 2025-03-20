@@ -1,4 +1,4 @@
-<div class="container">
+<div class="container narrow">
   <a routerLink="/home" class="link back">Retour</a>
   <h2>Connexion</h2>
   <form [formGroup]="loginFormGroup" (submit)="login()">
@@ -17,10 +17,10 @@
       type="submit"
       class="box-btn stroked-primary"
     >
-      Se connecter
+      Me connecter
     </button>
     @if (invalidCredentials) {
-    <div class="form-error">Identifiants incorrects</div>
+      <div class="form-error">Identifiants incorrects</div>
     }
   </form>
 

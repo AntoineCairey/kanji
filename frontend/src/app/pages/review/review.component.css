@@ -31,16 +31,28 @@ h3 {
   font-size: 64px;
 }
 
-.buttons {
+.container {
   position: fixed;
-  background-color: white;
+  width: 100%;
   bottom: 0;
   left: 0;
+}
+
+.buttons {
+  background-color: white;
   width: 100%;
   display: flex;
-  justify-content: space-evenly;
+  justify-content: space-around;
+  max-width: var(--width-narrow);
+  margin: auto;
 
   button {
     margin: 16px;
+  }
+}
+
+@media (width > 768px) {
+  .buttons {
+    margin-bottom: 100px;
   }
 }

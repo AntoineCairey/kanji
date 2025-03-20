@@ -1,4 +1,5 @@
-<div class="container">
+<div class="container narrow">
+  <a routerLink="/home" class="link back">Retour</a>
   <h2>Inscription</h2>
   <form [formGroup]="signupForm" (submit)="signup()">
     <div class="form-field">
@@ -57,12 +58,12 @@
       type="submit"
       [disabled]="signupForm.invalid"
     >
-      S'inscrire
+      M'inscrire
     </button>
   </form>
 
   <div class="no-account">
     <div>J'ai déjà un compte utilisateur</div>
-    <a routerLink="/signup" class="link forward">Me connecter</a>
+    <a routerLink="/login" class="link forward">Me connecter</a>
   </div>
 </div>

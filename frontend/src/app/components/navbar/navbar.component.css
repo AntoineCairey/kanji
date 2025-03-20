@@ -1,10 +1,15 @@
+.container{
+  width: 100%;
+  position: fixed;
+}
+
 .navbar {
   display: flex;
   justify-content: space-between;
   align-items: center;
   padding: 32px;
   gap: 50px;
-  position: fixed;
+  
   width: 100%;
   background: rgb(255, 255, 255, 1);
 }
@@ -74,5 +79,14 @@ nav a {
   .nav-mobile {
     display: flex;
     align-items: center;
+  }
+}
+
+@media (width >= 1000px) {
+  .navbar {
+    width: 1000px;
+    margin: 0 auto;
+    /* width: 80%;
+    max-width: 1200px; */
   }
 }
