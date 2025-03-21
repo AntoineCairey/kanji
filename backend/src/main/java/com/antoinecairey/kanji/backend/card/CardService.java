@@ -3,6 +3,7 @@ package com.antoinecairey.kanji.backend.card;
 import lombok.RequiredArgsConstructor;
 import java.time.LocalDate;
 import java.util.List;
+import java.util.Map;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
@@ -44,4 +45,16 @@ public class CardService {
     return merged;
   }
 
+  // Récupérer toutes cartes d'un user
+  public List<Card> getUserCards(Long userId) {
+    return cardRepository.findByUserId(userId);
+  }
+
+  public Map<String, Long> getMasteryStats(Long userId) {
+    Long mastered = cardRepository.countByUserIdAndStreakGreaterThanEqual(userId, 3);
+    Long learning = cardRepository.countByUserIdAndStreakLessThanEqualAndLastReviewNotNull(userId, 2);
+    Long notSeen = cardRepository.countByUserIdAndLastReviewNull(userId);
+
+    return Map.of("mastered", mastered, "learning", learning, "notSeen", notSeen);
+  }
 }

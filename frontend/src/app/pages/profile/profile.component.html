@@ -5,10 +5,9 @@
       <span class="icon material-symbols-outlined"> account_circle </span>
       {{ username() }}
     </h2>
-    <p>Compte créé le ...</p>
-    <div>... kanjis maîtrisés</div>
-    <div>... en cours d'apprentissage</div>
-    <div>... non vus</div>
+    <div>{{ stats().mastered }} kanjis maîtrisés</div>
+    <div>{{ stats().learning }} en cours d'apprentissage</div>
+    <div>{{ stats().notSeen }} non vus</div>
   </div>
   <button class="box-btn stroked-primary" (click)="logout()">
     Me déconnecter

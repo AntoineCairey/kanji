@@ -25,10 +25,10 @@ public class Card {
     private Kanji kanji;
 
     @Column(nullable = false)
-    private boolean isReverse;
+    private Boolean isReverse = false;
 
     @Column(nullable = false)
-    private int streak = 0;
+    private Integer streak = 0;
 
     @Temporal(TemporalType.DATE)
     private LocalDate lastReview;

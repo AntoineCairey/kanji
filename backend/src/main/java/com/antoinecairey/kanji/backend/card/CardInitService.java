@@ -28,15 +28,17 @@ public class CardInitService {
       Card forwardCard = new Card();
       forwardCard.setUser(user);
       forwardCard.setKanji(kanji);
-      forwardCard.setReverse(false);
+      // forwardCard.setReverse(false);
       cardRepository.save(forwardCard);
 
       // Carte en mode "reverse" (sens → kanji)
-      Card reverseCard = new Card();
-      reverseCard.setUser(user);
-      reverseCard.setKanji(kanji);
-      reverseCard.setReverse(true);
-      cardRepository.save(reverseCard);
+      /*
+       * Card reverseCard = new Card();
+       * reverseCard.setUser(user);
+       * reverseCard.setKanji(kanji);
+       * reverseCard.setReverse(true);
+       * cardRepository.save(reverseCard);
+       */
     }
   }
 
@@ -52,18 +54,20 @@ public class CardInitService {
           Card forwardCard = new Card();
           forwardCard.setUser(user);
           forwardCard.setKanji(kanji);
-          forwardCard.setReverse(false);
+          // forwardCard.setReverse(false);
           cardRepository.save(forwardCard);
         }
 
         // Vérifie si la carte en mode "reverse" existe déjà
-        if (!cardRepository.existsByUserAndKanjiAndIsReverse(user, kanji, true)) {
-          Card reverseCard = new Card();
-          reverseCard.setUser(user);
-          reverseCard.setKanji(kanji);
-          reverseCard.setReverse(true);
-          cardRepository.save(reverseCard);
-        }
+        /*
+         * if (!cardRepository.existsByUserAndKanjiAndIsReverse(user, kanji, true)) {
+         * Card reverseCard = new Card();
+         * reverseCard.setUser(user);
+         * reverseCard.setKanji(kanji);
+         * reverseCard.setReverse(true);
+         * cardRepository.save(reverseCard);
+         * }
+         */
       }
     }
   }

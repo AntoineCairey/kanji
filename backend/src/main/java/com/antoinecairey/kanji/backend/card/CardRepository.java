@@ -15,7 +15,20 @@ public interface CardRepository extends JpaRepository<Card, Long> {
   // Trouver les cartes manquantes
   boolean existsByUserAndKanjiAndIsReverse(User user, Kanji kanji, boolean isReverse);
 
+  // Trouver cartes à étudier aujourd'hui
   List<Card> findByUserIdAndLastReview(Long userId, LocalDate today);
+
   List<Card> findTop10ByUserIdAndLastReviewLessThanOrderByLastReviewAsc(Long userId, LocalDate today);
+
   List<Card> findTop10ByUserIdAndLastReviewNullOrderByIsReverseAsc(Long userId);
+
+  // Compter cartes par niveau de maitrise (streak)
+
+  Long countByUserIdAndStreakGreaterThanEqual(Long userId, Integer minStreak);
+
+  Long countByUserIdAndStreakBetween(Long userId, Integer minStreak, Integer maxStreak);
+  Long countByUserIdAndStreakLessThanEqualAndLastReviewNotNull(Long userId, Integer maxStreak);
+
+  Long countByUserIdAndStreakLessThanEqual(Long userId, Integer maxStreak);
+  Long countByUserIdAndLastReviewNull(Long userId);
 }
