@@ -26,9 +26,7 @@ public interface CardRepository extends JpaRepository<Card, Long> {
 
   Long countByUserIdAndStreakGreaterThanEqual(Long userId, Integer minStreak);
 
-  Long countByUserIdAndStreakBetween(Long userId, Integer minStreak, Integer maxStreak);
   Long countByUserIdAndStreakLessThanEqualAndLastReviewNotNull(Long userId, Integer maxStreak);
 
-  Long countByUserIdAndStreakLessThanEqual(Long userId, Integer maxStreak);
   Long countByUserIdAndLastReviewNull(Long userId);
 }

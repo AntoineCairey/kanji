@@ -43,7 +43,7 @@ public class CardController {
     return ResponseEntity.ok("Cartes manquantes générées avec succès !");
   }
 
-  // Cartes d'un user
+  // Cartes du user
   @GetMapping("/me")
   public List<Card> getUserCards(@RequestHeader("Authorization") String authHeader) {
     String token = authHeader.substring(7);
@@ -53,6 +53,7 @@ public class CardController {
     return cardService.getUserCards(user.getId());
   }
 
+  // Stats de maitrise du user
   @GetMapping("/stats")
   public ResponseEntity<Map<String, Long>> getMasteryStats(@RequestHeader("Authorization") String authHeader) {
     String token = authHeader.substring(7);

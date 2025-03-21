@@ -50,11 +50,11 @@ public class CardService {
     return cardRepository.findByUserId(userId);
   }
 
+  // Récupérer les stats de maitrise d'un user
   public Map<String, Long> getMasteryStats(Long userId) {
     Long mastered = cardRepository.countByUserIdAndStreakGreaterThanEqual(userId, 3);
     Long learning = cardRepository.countByUserIdAndStreakLessThanEqualAndLastReviewNotNull(userId, 2);
     Long notSeen = cardRepository.countByUserIdAndLastReviewNull(userId);
-
     return Map.of("mastered", mastered, "learning", learning, "notSeen", notSeen);
   }
 }
