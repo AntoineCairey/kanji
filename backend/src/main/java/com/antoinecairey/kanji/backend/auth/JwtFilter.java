@@ -8,6 +8,7 @@ import java.io.IOException;
 import java.util.Arrays;
 
 import lombok.RequiredArgsConstructor;
+
 import org.springframework.lang.NonNull;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -32,7 +33,7 @@ public class JwtFilter extends OncePerRequestFilter {
 
     String requestURI = request.getRequestURI();
 
-    String[] allowedPrefixes = { "/api/auth/", "/api/kanji/" };
+    String[] allowedPrefixes = { "/api/auth", "/api/kanji" };
     if (Arrays.stream(allowedPrefixes).anyMatch(requestURI::startsWith)) {
       chain.doFilter(request, response);
       return;
