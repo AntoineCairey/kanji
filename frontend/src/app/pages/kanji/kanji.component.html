@@ -1,46 +1,48 @@
-<a routerLink="/list" class="link back">Retour</a>
+<div class="narrow">
+  <a routerLink="/list" class="link back">Retour</a>
 
-<div class="symbol">{{ currentKanji().symbol }}</div>
+  <div class="symbol">{{ currentKanji().symbol }}</div>
 
-<h3>Sens</h3>
-<div>{{ currentKanji().fr }}</div>
+  <h3>Sens</h3>
+  <div>{{ currentKanji().fr }}</div>
 
-<h3>Lectures</h3>
-<div class="readings">
-  <h4>kun</h4>
-  <h4>on</h4>
-  <p>{{ currentKanji().kun }}</p>
-  <p>{{ currentKanji().onn }}</p>
-  <p>{{ toRomaji(currentKanji().kun) }}</p>
-  <p>{{ toRomaji(currentKanji().onn) }}</p>
-</div>
+  <h3>Lectures</h3>
+  <div class="readings">
+    <h4>kun</h4>
+    <h4>on</h4>
+    <p>{{ currentKanji().kun }}</p>
+    <p>{{ currentKanji().onn }}</p>
+    <p>{{ toRomaji(currentKanji().kun) }}</p>
+    <p>{{ toRomaji(currentKanji().onn) }}</p>
+  </div>
 
-<div class="words">
-  <h3>Vocabulaire</h3>
-  @for (word of words(); track word.id; let i = $index) {
-    <div class="word">
-      {{ word.kanji }} ({{ word.kana }} {{ toRomaji(word.kana) }}) :
-      {{ word.fr }}
-    </div>
-    @if (i < words().length - 1) {
-      <hr />
+  <div class="words">
+    <h3>Vocabulaire</h3>
+    @for (word of words(); track word.id; let i = $index) {
+      <div class="word">
+        {{ word.kanji }} ({{ word.kana }} {{ toRomaji(word.kana) }}) :
+        {{ word.fr }}
+      </div>
+      @if (i < words().length - 1) {
+        <hr />
+      }
     }
-  }
-</div>
+  </div>
 
-<footer class="buttons">
-  <button
-    class="box-btn back"
-    (click)="goToPrevious()"
-    [disabled]="currentIndex() === 0"
-  >
-    Précédent
-  </button>
-  <button
-    class="box-btn forward"
-    (click)="goToNext()"
-    [disabled]="currentIndex() === kanjis().length - 1"
-  >
-    Suivant
-  </button>
-</footer>
+  <footer class="buttons">
+    <button
+      class="box-btn back"
+      (click)="goToPrevious()"
+      [disabled]="currentIndex() === 0"
+    >
+      Précédent
+    </button>
+    <button
+      class="box-btn forward"
+      (click)="goToNext()"
+      [disabled]="currentIndex() === kanjis().length - 1"
+    >
+      Suivant
+    </button>
+  </footer>
+</div>
