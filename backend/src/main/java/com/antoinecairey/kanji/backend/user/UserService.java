@@ -1,6 +1,6 @@
 package com.antoinecairey.kanji.backend.user;
 
-import java.util.List;
+// import java.util.List;
 import java.util.Optional;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -37,17 +37,6 @@ public class UserService {
     return new LoginResponse(token, username);
   }
 
-  public List<UserDTO> getAllUsers() {
-    return userRepository.findAll().stream()
-        .map(UserMapper.INSTANCE::toDto)
-        .toList();
-  }
-
-  public Optional<UserDTO> getUserById(Long id) {
-    return userRepository.findById(id)
-        .map(UserMapper.INSTANCE::toDto);
-  }
-
   public Optional<User> getUserByUsername(String username) {
     return userRepository.findByUsername(username);
   }
@@ -57,13 +46,26 @@ public class UserService {
         .map(UserMapper.INSTANCE::toDto);
   }
 
-  public User addUser(UserDTO userDTO) {
-    User user = UserMapper.INSTANCE.toEntity(userDTO);
-    return userRepository.save(user);
-  }
-
-  public void deleteUser(Long id) {
-    userRepository.deleteById(id);
-  }
+  /*
+   * public List<UserDTO> getAllUsers() {
+   * return userRepository.findAll().stream()
+   * .map(UserMapper.INSTANCE::toDto)
+   * .toList();
+   * }
+   * 
+   * public Optional<UserDTO> getUserById(Long id) {
+   * return userRepository.findById(id)
+   * .map(UserMapper.INSTANCE::toDto);
+   * }
+   *
+   * public User addUser(UserDTO userDTO) {
+   * User user = UserMapper.INSTANCE.toEntity(userDTO);
+   * return userRepository.save(user);
+   * }
+   * 
+   * public void deleteUser(Long id) {
+   * userRepository.deleteById(id);
+   * }
+   */
 
 }
