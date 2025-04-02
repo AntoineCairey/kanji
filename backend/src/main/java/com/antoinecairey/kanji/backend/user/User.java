@@ -2,12 +2,14 @@ package com.antoinecairey.kanji.backend.user;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 import jakarta.persistence.*;
 
 @Data
 @Entity
 @Table(name = "user")
 @AllArgsConstructor
+@NoArgsConstructor
 public class User {
 
     @Id

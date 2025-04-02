@@ -23,6 +23,6 @@ public class AuthController {
   @PostMapping("/login")
   public ResponseEntity<LoginResponse> login(@RequestBody User user) {
     LoginResponse loginResponse = userService.login(user.getUsername(), user.getPassword());
-    return ResponseEntity.ok(loginResponse); // Spring se charge de convertir en JSON
+    return ResponseEntity.ok(loginResponse);
   }
 }
