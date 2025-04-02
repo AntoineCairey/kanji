@@ -25,8 +25,8 @@ public class CardController {
   public List<Card> getCardsToReview(@RequestHeader("Authorization") String authHeader) {
     String token = authHeader.substring(7);
     String username = jwtUtil.extractUsername(token);
-    User user = userService.getUserByUsername(username)
-        .orElseThrow(() -> new RuntimeException("Utilisateur non trouvé"));
+    User user = userService.getUserByUsername(username);
+        //.orElseThrow(() -> new RuntimeException("Utilisateur non trouvé"));
     return cardService.getCardsForToday(user.getId());
   }
 
@@ -48,8 +48,8 @@ public class CardController {
   public List<Card> getUserCards(@RequestHeader("Authorization") String authHeader) {
     String token = authHeader.substring(7);
     String username = jwtUtil.extractUsername(token);
-    User user = userService.getUserByUsername(username)
-        .orElseThrow(() -> new RuntimeException("Utilisateur non trouvé"));
+    User user = userService.getUserByUsername(username);
+        //.orElseThrow(() -> new RuntimeException("Utilisateur non trouvé"));
     return cardService.getUserCards(user.getId());
   }
 
@@ -58,8 +58,8 @@ public class CardController {
   public ResponseEntity<Map<String, Long>> getMasteryStats(@RequestHeader("Authorization") String authHeader) {
     String token = authHeader.substring(7);
     String username = jwtUtil.extractUsername(token);
-    User user = userService.getUserByUsername(username)
-        .orElseThrow(() -> new RuntimeException("Utilisateur non trouvé"));
+    User user = userService.getUserByUsername(username);
+        //.orElseThrow(() -> new RuntimeException("Utilisateur non trouvé"));
     return ResponseEntity.ok(cardService.getMasteryStats(user.getId()));
   }
 

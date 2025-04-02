@@ -37,8 +37,9 @@ public class UserService {
     return new LoginResponse(token, username);
   }
 
-  public Optional<User> getUserByUsername(String username) {
-    return userRepository.findByUsername(username);
+  public User getUserByUsername(String username) {
+    return userRepository.findByUsername(username)
+        .orElseThrow(() -> new UserNotFoundException("User '" + username + "' not found"));
   }
 
   public Optional<UserDTO> getUserDtoByUsername(String username) {

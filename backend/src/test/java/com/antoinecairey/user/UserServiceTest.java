@@ -1,7 +1,7 @@
 package com.antoinecairey.user;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertTrue;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.mockito.Mockito.times;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
@@ -18,22 +18,31 @@ import com.antoinecairey.kanji.backend.user.*;
 
 @ExtendWith(MockitoExtension.class)
 class UserServiceTest {
-    
-    @Mock
-    private UserRepository userRepository;
 
-    @InjectMocks
-    private UserService userService;
+  @Mock
+  private UserRepository userRepository;
 
-    @Test
-    void getUserByUsername_ShouldReturnUser_WhenUserExists() {
-        User user = new User(1L, "john", "pwd", "USER");
-        when(userRepository.findByUsername("john")).thenReturn(Optional.of(user));
+  @InjectMocks
+  private UserService userService;
 
-        Optional<User> result = userService.getUserByUsername("john");
+  @Test
+  void getUserByUsername_ShouldReturnUser_WhenUserExists() {
+    // GIVEN
+    User user = new User(1L, "john", "pwd", "USER");
+    when(userRepository.findByUsername("john")).thenReturn(Optional.of(user));
 
-        assertTrue(result.isPresent());
-        assertEquals("pwd", result.get().getPassword());
-        verify(userRepository, times(1)).findByUsername("john");
-    }
+    // WHEN
+    User result = userService.getUserByUsername("john");
+
+    // THEN
+    assertEquals("pwd", result.getPassword());
+    verify(userRepository, times(1)).findByUsername("john");
+  }
+
+  @Test
+  void getUserByUsername_ShouldThrowException_WhenUserNotFound() {
+    when(userRepository.findByUsername("john")).thenReturn(Optional.empty());
+
+    assertThrows(UserNotFoundException.class, () -> userService.getUserByUsername("john"));
+  }
 }
