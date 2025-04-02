@@ -16,8 +16,12 @@ public class AuthController {
 
   @PostMapping("/register")
   public ResponseEntity<String> register(@RequestBody User user) {
-    userService.createUser(user);
-    return ResponseEntity.ok("Utilisateur créé !");
+    try {
+      userService.createUser(user);
+      return ResponseEntity.ok("Utilisateur créé !");
+    } catch (Exception e) {
+      return ResponseEntity.badRequest().body(e.getMessage());
+    }
   }
 
   @PostMapping("/login")

@@ -23,6 +23,9 @@ public class UserService {
   private final JwtUtil jwtUtil;
 
   public User createUser(User user) {
+    if (userRepository.existsByUsername(user.getUsername())) {
+      throw new RuntimeException("Le nom d'utilisateur est déjà pris.");
+    }
     user.setPassword(passwordEncoder.encode(user.getPassword()));
     user.setRole("USER");
     User savedUser = userRepository.save(user);
