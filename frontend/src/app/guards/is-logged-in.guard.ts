@@ -1,6 +1,6 @@
 import { inject } from '@angular/core';
 import { CanActivateFn, Router } from '@angular/router';
-import { LoginService } from '../services/login/login.service';
+import { LoginService } from '../services/login.service';
 import { catchError, map } from 'rxjs';
 
 export const isLoggedInGuard: CanActivateFn = (route, state) => {
@@ -10,7 +10,7 @@ export const isLoggedInGuard: CanActivateFn = (route, state) => {
   if (!loginService.username()) {
     return loginService.getUser().pipe(
       map((_) => true),
-      catchError((_) => router.navigate(['review-info']))
+      catchError((_) => router.navigate(['review-info'])),
     );
   }
 

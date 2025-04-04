@@ -1,8 +1,8 @@
 import { HttpClient } from '@angular/common/http';
 import { computed, inject, Injectable, signal } from '@angular/core';
-import { Card } from '../../models/card.model';
-import { environment } from '../../../environments/environment';
-import { Stats } from '../../models/stats.model';
+import { Card } from '../models/card.model';
+import { environment } from '../../environments/environment';
+import { Stats } from '../models/stats.model';
 
 @Injectable({
   providedIn: 'root',

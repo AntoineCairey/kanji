@@ -1,7 +1,7 @@
 import { Component, computed, inject, OnInit, signal } from '@angular/core';
 import { Router, RouterLink } from '@angular/router';
-import { CardService } from '../../services/card/card.service';
-import { LoginService } from '../../services/login/login.service';
+import { CardService } from '../../services/card.service';
+import { LoginService } from '../../services/login.service';
 
 @Component({
   selector: 'app-review-dashboard',

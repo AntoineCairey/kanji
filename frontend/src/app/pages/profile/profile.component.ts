@@ -1,7 +1,7 @@
 import { Component, inject, OnInit } from '@angular/core';
-import { LoginService } from '../../services/login/login.service';
+import { LoginService } from '../../services/login.service';
 import { Router, RouterLink } from '@angular/router';
-import { CardService } from '../../services/card/card.service';
+import { CardService } from '../../services/card.service';
 
 @Component({
   selector: 'app-profile',
@@ -22,6 +22,6 @@ export class ProfileComponent implements OnInit {
   }
 
   ngOnInit(): void {
-      this.cardService.fetchStats();
+    this.cardService.fetchStats();
   }
 }

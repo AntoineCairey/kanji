@@ -1,9 +1,9 @@
 import { Component, computed, inject, OnInit, signal } from '@angular/core';
 import { Router, RouterLink } from '@angular/router';
-import { CardService } from '../../services/card/card.service';
+import { CardService } from '../../services/card.service';
 import { HttpClient } from '@angular/common/http';
 import { Card } from '../../models/card.model';
-import { KanjiService } from '../../services/kanji/kanji.service';
+import { KanjiService } from '../../services/kanji.service';
 import { environment } from '../../../environments/environment';
 
 @Component({
@@ -35,7 +35,7 @@ export class ReviewComponent implements OnInit {
     this.http
       .put(
         `${environment.apiUrl}/cards/review/${cardId}?success=${isSuccess}`,
-        {}
+        {},
       )
       .subscribe((_) => {
         this.isAnswer.set(false);

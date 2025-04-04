@@ -1,5 +1,5 @@
 import { Component, inject, input } from '@angular/core';
-import { KanjiService } from '../../services/kanji/kanji.service';
+import { KanjiService } from '../../services/kanji.service';
 
 @Component({
   selector: 'app-tile',

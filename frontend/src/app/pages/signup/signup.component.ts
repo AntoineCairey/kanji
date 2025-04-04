@@ -6,7 +6,7 @@ import {
   Validators,
 } from '@angular/forms';
 import { Router, RouterLink } from '@angular/router';
-import { Credentials, LoginService } from '../../services/login/login.service';
+import { Credentials, LoginService } from '../../services/login.service';
 
 @Component({
   selector: 'app-signup',

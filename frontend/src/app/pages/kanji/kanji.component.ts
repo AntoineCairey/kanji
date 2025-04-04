@@ -7,7 +7,7 @@ import {
   signal,
 } from '@angular/core';
 import { ActivatedRoute, Router, RouterLink } from '@angular/router';
-import { KanjiService } from '../../services/kanji/kanji.service';
+import { KanjiService } from '../../services/kanji.service';
 
 @Component({
   selector: 'app-kanji',

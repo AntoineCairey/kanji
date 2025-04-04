@@ -1,9 +1,9 @@
 import { HttpClient } from '@angular/common/http';
 import { inject, Injectable, signal } from '@angular/core';
-import { Kanji } from '../../models/kanji.model';
-import { Word } from '../../models/word.model';
+import { Kanji } from '../models/kanji.model';
+import { Word } from '../models/word.model';
 import { toRomaji } from 'wanakana';
-import { environment } from '../../../environments/environment';
+import { environment } from '../../environments/environment';
 import { catchError, of } from 'rxjs';
 
 @Injectable({

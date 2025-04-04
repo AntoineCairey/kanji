@@ -5,9 +5,9 @@ import {
   provideHttpClientTesting,
 } from '@angular/common/http/testing';
 import { KanjiService } from './kanji.service';
-import { Kanji } from '../../models/kanji.model';
-import { environment } from '../../../environments/environment';
-import { Word } from '../../models/word.model';
+import { Kanji } from '../models/kanji.model';
+import { environment } from '../../environments/environment';
+import { Word } from '../models/word.model';
 
 describe('KanjiService', () => {
   let service: KanjiService;
